@@ -11,15 +11,12 @@ $racine=substr($argv[0],0,strpos($argv[0], "list"));
 require_once $racine.'aws-autoloader.php';
 
 use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
 
-$CELLAR_ADDON_HOST = getenv("cellar-c2.services.clever-cloud.com");
-$CELLAR_ADDON_KEY_ID = getenv("SW016A92CMAJ79EUZY77");
-$CELLAR_ADDON_KEY_SECRET = getenv("KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6");
-//echo "\n".$CELLAR_ADDON_HOST."\n".$CELLAR_ADDON_KEY_ID."\n".$CELLAR_ADDON_KEY_SECRET."\n";
 
-try {
+$bucket = 'PUBDYN-PHPS3';
 
-    // Instantiate the S3 client with your AWS credentials
+   // Instantiate the S3 client with your AWS credentials
 
     $s3 = new Aws\S3\S3Client([
         'signature' => 'v2',
@@ -31,6 +28,7 @@ try {
         ],
         'endpoint' => "https://".$CELLAR_ADDON_HOST
       ]);
+
 
 // Use the high-level iterators (returns ALL of your objects).
 try {

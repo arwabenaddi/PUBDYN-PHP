@@ -1,7 +1,5 @@
 <?php
 
-// To be executed in a command toolwith access to the directory of this source code  :
-// (for example in a WAMP installation) => $ /c/wamp64/bin/php/php7.2.4/php.exe listS3OneLine.php
 
 
 // Decode the argument of the batch

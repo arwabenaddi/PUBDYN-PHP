@@ -12,7 +12,7 @@ require_once $racine.'aws-autoloader.php';
 
 use Aws\S3\S3Client;
 
-$CELLAR_ADDON_HOST = getenv("CELLAR_ADDON_HOST");
+$CELLAR_ADDON_HOST = getenv("cellar-c2.services.clever-cloud.com");
 $CELLAR_ADDON_KEY_ID = getenv("SW016A92CMAJ79EUZY77");
 $CELLAR_ADDON_KEY_SECRET = getenv("KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6");
 //echo "\n".$CELLAR_ADDON_HOST."\n".$CELLAR_ADDON_KEY_ID."\n".$CELLAR_ADDON_KEY_SECRET."\n";

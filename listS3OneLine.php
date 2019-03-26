@@ -1,5 +1,5 @@
 <?php
-echo "tests3";
+echo "testS3f";
 
 // Decode the argument of the batch
 $racine=substr($argv[0],0,strpos($argv[0], "list"));

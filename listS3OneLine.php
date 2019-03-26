@@ -52,7 +52,7 @@ try {
     ]);
     foreach ($objects['Contents']  as $object) {
        echo 'la base est';
-        $object['Key'].PHP_EOL;
+        echo $object['Key'].PHP_EOL;
        
     }
 } catch (S3Exception $e) {

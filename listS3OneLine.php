@@ -18,6 +18,10 @@ $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
 if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }
+else{
+   echo 'connect to database';
+}
+
 
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
@@ -49,32 +53,7 @@ try {
     foreach ($results as $result) {
         foreach ($result['Contents'] as $object) {
             echo $object['Key'].PHP_EOL;
-        }
-    }
-} catch (S3Exception $e) {
-    echo $e->getMessage().PHP_EOL;
-}
-
-// Use the plain API (returns ONLY up to 1000 of your objects).
-try {
-    $objects = $s3->listObjects([
-      
-       'Bucket'=>$bucket
-       
-    ]);
-    foreach ($objects['Contents']  as $object) {
-       
-        echo $object['Key'].PHP_EOL;
-       
-    }
-} catch (S3Exception $e) {
-    echo $e->getMessage().PHP_EOL;
-}
-
-echo  $object['Key'];
-/////////////////////////////////////////////////////////////////
-
-
+         
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
@@ -102,6 +81,30 @@ if (substr(trim($line), -1, 1) == ';')
   echo "Tables imported successfully";
 }
 }
+        }
+    }
+} catch (S3Exception $e) {
+    echo $e->getMessage().PHP_EOL;
+}
+
+// Use the plain API (returns ONLY up to 1000 of your objects).
+try {
+    $objects = $s3->listObjects([
+      
+       'Bucket'=>$bucket
+       
+    ]);
+    foreach ($objects['Contents']  as $object) {
+       
+        echo $object['Key'].PHP_EOL;
+       
+    }
+} catch (S3Exception $e) {
+    echo $e->getMessage().PHP_EOL;
+}
+/////////////////////////////////////////////////////////////////
+
+
 
 
 

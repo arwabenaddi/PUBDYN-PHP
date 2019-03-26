@@ -11,7 +11,7 @@ use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 
 
-$bucket = 'PUBDYN-PHPS3';
+$bucket = 'new-bucket-10ed2760';
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
 $CELLAR_ADDON_KEY_ID = 'SW016A92CMAJ79EUZY77';
 $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
@@ -27,7 +27,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             'key'=>$CELLAR_ADDON_KEY_ID,
             'secret'=>$CELLAR_ADDON_KEY_SECRET
         ],
-        'endpoint'=>"https://".$CELLAR_ADDON_HOST
+        'endpoint'=>"https://".$bucket.".".$CELLAR_ADDON_HOST
       ]);
 
 

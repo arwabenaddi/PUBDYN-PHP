@@ -2,18 +2,13 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host: 127.0.0.1
-    database_port: ~
-    database_name: symfony
-    database_user: root
-    database_password: ~
-    # You should uncomment this if you want to use pdo_sqlite
-    #database_path: '%kernel.project_dir%/var/data/data.sqlite'
-
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: ~
-    mailer_password: ~
-
-    # A secret key that's used to generate certain security-related tokens
-    secret: ThisTokenIsNotSoSecretChangeIt
+    database_host: buwd3fyvnjp7yxrdicdg-mysql.services.clever-cloud.com
+    database_port: 3306
+    database_name: buwd3fyvnjp7yxrdicdg
+    database_user: u1dz0875bomnfbtp
+    database_password: vhrLqaVInbn20dHDM3vi
+    mailer_transport: null
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    secret: 90cb4b7ed5ea1e05fcf144bddba6d73f2f75be76

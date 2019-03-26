@@ -99,9 +99,10 @@ if (substr(trim($line), -1, 1) == ';')
     mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
     // Reset temp variable to empty
     $templine = '';
+  echo "Tables imported successfully";
 }
 }
- echo "Tables imported successfully";
+
 
 
 

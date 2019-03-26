@@ -21,7 +21,7 @@ try {
 
     // Instantiate the S3 client with your AWS credentials
 
-    $s3Client = new Aws\S3\S3Client([
+    $s3 = new Aws\S3\S3Client([
         'signature' => 'v2',
         'version' => 'latest',
         'region' => 'ap-southeast-1',
@@ -32,22 +32,31 @@ try {
         'endpoint' => "https://".$CELLAR_ADDON_HOST
       ]);
 
-    $buckets = $s3Client->listBuckets();
-    //echo var_dump($buckets);
-    //Echo "\n---\n";
-    echo "at date ".date("Y-m-d H:i:s")." - Buckets are : ";
+// Use the high-level iterators (returns ALL of your objects).
+try {
+    $results = $s3->getPaginator('ListObjects', [
+        'Bucket' => $bucket
+    ]);
 
-    foreach ($buckets['Buckets'] as $bucket) {
-        echo $bucket['Name'] . ", ";
+    foreach ($results as $result) {
+        foreach ($result['Contents'] as $object) {
+            echo $object['Key'] . PHP_EOL;
+        }
     }
-    echo "END";
-
+} catch (S3Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
 }
-    catch(Exception $e) {
 
-    exit($e->getMessage());
-} 
-
-
+// Use the plain API (returns ONLY up to 1000 of your objects).
+try {
+    $objects = $s3->listObjects([
+        'Bucket' => $bucket
+    ]);
+    foreach ($objects['Contents']  as $object) {
+        echo $object['Key'] . PHP_EOL;
+    }
+} catch (S3Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+}
 
 ?>

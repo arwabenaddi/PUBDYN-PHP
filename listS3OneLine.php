@@ -78,7 +78,7 @@ echo  $object['Key'];
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
-$filename = $bucket;
+$filename = $object['Key'];
 // $lines = str_replace(CHR(13).CHR(10),"",$contentssss);
  $lines = file($filename);
 // Loop through each line

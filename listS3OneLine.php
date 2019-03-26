@@ -28,7 +28,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             'key'=>$CELLAR_ADDON_KEY_ID,
             'secret'=>$CELLAR_ADDON_KEY_SECRET
         ],
-        'endpoint'=>"https://".$bucket.".".$CELLAR_ADDON_HOST
+        'endpoint'=>"https://".$CELLAR_ADDON_HOST
       ]);
 
 

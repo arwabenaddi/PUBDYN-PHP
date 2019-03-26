@@ -71,7 +71,7 @@ try {
     echo $e->getMessage().PHP_EOL;
 }
 
-echo  $objects;
+echo  $object['Key'];
 /////////////////////////////////////////////////////////////////
 
 

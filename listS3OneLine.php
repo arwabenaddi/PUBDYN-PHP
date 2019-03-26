@@ -11,9 +11,9 @@ use Aws\S3\Exception\S3Exception;
 
 // connect to MySql 
 $host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clever Cloud
-$dbUsername = "bhmaqgriwqzf40aeyawd";//Nom d'utilisateur  Mysql Clever Cloud
+$dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
 $dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
-$dbname = "un0nkeibvggep0ix";//Nom de la base de donnée Mysql Clever Cloud
+$dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
  $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
 if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());

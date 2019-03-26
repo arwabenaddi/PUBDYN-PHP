@@ -12,6 +12,9 @@ use Aws\S3\Exception\S3Exception;
 
 
 $bucket = 'PUBDYN-PHPS3';
+$CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
+$CELLAR_ADDON_KEY_ID = 'SW016A92CMAJ79EUZY77';
+$CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
    // Instantiate the S3 client with your AWS credentials
 
@@ -20,6 +23,7 @@ $bucket = 'PUBDYN-PHPS3';
         'version'=>'latest',
         'region'=>'ap-southeast-1',
         'credentials'=>[
+           'host' => $CELLAR_ADDON_HOST,
             'key'=>$CELLAR_ADDON_KEY_ID,
             'secret'=>$CELLAR_ADDON_KEY_SECRET
         ],

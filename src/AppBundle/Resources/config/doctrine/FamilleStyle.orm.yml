@@ -1,0 +1,61 @@
+AppBundle\Entity\FamilleStyle:
+    type: entity
+    table: famille_style
+    indexes:
+        fk_question_style_type_appartenance_sectorielle1_idx:
+            columns:
+                - id_type_app_sect
+        fk_famille_style_referentiel1_idx:
+            columns:
+                - id_referentiel
+        fk_famille_style_famille1_idx:
+            columns:
+                - id_famille
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        style:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        idFamille:
+            targetEntity: Famille
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_famille:
+                    referencedColumnName: id_famille
+            orphanRemoval: false
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_referentiel:
+                    referencedColumnName: id_referentiel
+            orphanRemoval: false
+        idTypeAppSect:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_app_sect:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

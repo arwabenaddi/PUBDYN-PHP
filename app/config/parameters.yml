@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: 3306
+    database_name: pub-dyn
+    database_user: root
+    database_password: null
+    mailer_transport: null
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    secret: 90cb4b7ed5ea1e05fcf144bddba6d73f2f75be76

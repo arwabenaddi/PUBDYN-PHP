@@ -1,0 +1,54 @@
+AppBundle\Entity\Marches:
+    type: entity
+    table: marches
+    indexes:
+        idx_marche:
+            columns:
+                - Marche
+        marche_type:
+            columns:
+                - id_marche_type
+    id:
+        idMarche:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_marche
+        idMarcheType:
+            associationKey: true
+    fields:
+        codemarche:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: CodeMarche
+        marche:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Marche
+        marcheEn:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Marche_en
+    oneToOne:
+        idMarcheType:
+            targetEntity: MarcheType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_marche_type:
+                    referencedColumnName: id_marche_type
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

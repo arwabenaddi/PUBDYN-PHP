@@ -1,0 +1,37 @@
+AppBundle\Entity\Sources:
+    type: entity
+    table: sources
+    indexes:
+        idx_ordre:
+            columns:
+                - ordre
+    id:
+        idSource:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_source
+            generator:
+                strategy: IDENTITY
+    fields:
+        ordre:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+        source:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        sourceEn:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: source_en
+    lifecycleCallbacks: {  }

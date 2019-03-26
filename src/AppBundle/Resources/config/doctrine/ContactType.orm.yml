@@ -1,0 +1,32 @@
+AppBundle\Entity\ContactType:
+    type: entity
+    table: contact_type
+    indexes:
+        idx_libelle:
+            columns:
+                - libelle
+    id:
+        idContactType:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_contact_type
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        libelleEn:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: libelle_en
+    lifecycleCallbacks: {  }

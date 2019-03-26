@@ -1,0 +1,61 @@
+AppBundle\Entity\SousFamilleStyle:
+    type: entity
+    table: sous_famille_style
+    indexes:
+        fk_question_style_type_appartenance_sectorielle1_idx:
+            columns:
+                - id_type_app_sect
+        fk_sous_famille_style_referentiel1_idx:
+            columns:
+                - id_referentiel
+        fk_sous_famille_style_sous_famille1_idx:
+            columns:
+                - id_sous_famille
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        style:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        idTypeAppSect:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_app_sect:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_referentiel:
+                    referencedColumnName: id_referentiel
+            orphanRemoval: false
+        idSousFamille:
+            targetEntity: SousFamille
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_sous_famille:
+                    referencedColumnName: id_sous_famille
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

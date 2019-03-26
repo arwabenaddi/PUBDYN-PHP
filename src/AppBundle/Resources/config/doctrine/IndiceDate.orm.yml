@@ -1,0 +1,40 @@
+AppBundle\Entity\IndiceDate:
+    type: entity
+    table: indice_date
+    indexes:
+        idx_date:
+            columns:
+                - idxdate
+    id:
+        idDate:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_date
+            generator:
+                strategy: IDENTITY
+    fields:
+        idxdate:
+            type: date
+            nullable: true
+    manyToMany:
+        idIndice:
+            targetEntity: Indice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idDate
+            joinTable:
+                name: indice_date_indice
+                joinColumns:
+                    -
+                        name: id_date
+                        referencedColumnName: id_date
+                inverseJoinColumns:
+                    -
+                        name: id_indice
+                        referencedColumnName: id_indice
+            orderBy: null
+    lifecycleCallbacks: {  }

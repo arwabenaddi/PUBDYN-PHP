@@ -1,0 +1,61 @@
+AppBundle\Entity\SousFamilleQuestion:
+    type: entity
+    table: sous_famille_question
+    indexes:
+        fk_sous_famille_question_referentiel1_idx:
+            columns:
+                - id_referentiel
+        fk_sous_famille_question_question1_idx:
+            columns:
+                - id_question
+        index5:
+            columns:
+                - ordre
+        fk_sous_famille_question_sous_famille1_idx:
+            columns:
+                - id_sous_famille
+    id:
+        idQuestion:
+            associationKey: true
+        idReferentiel:
+            associationKey: true
+        idSousFamille:
+            associationKey: true
+    fields:
+        ordre:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+    oneToOne:
+        idQuestion:
+            targetEntity: Question
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_question:
+                    referencedColumnName: id_question
+            orphanRemoval: false
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_referentiel:
+                    referencedColumnName: id_referentiel
+            orphanRemoval: false
+        idSousFamille:
+            targetEntity: SousFamille
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_sous_famille:
+                    referencedColumnName: id_sous_famille
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

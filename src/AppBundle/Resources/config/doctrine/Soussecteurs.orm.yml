@@ -1,0 +1,46 @@
+AppBundle\Entity\Soussecteurs:
+    type: entity
+    table: soussecteurs
+    indexes:
+        secteur:
+            columns:
+                - id_secteur
+        idx_soussecteur:
+            columns:
+                - soussecteur
+    id:
+        idSsecteur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_ssecteur
+            generator:
+                strategy: IDENTITY
+    fields:
+        soussecteur:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        soussecteurEn:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: soussecteur_en
+    manyToOne:
+        idSecteur:
+            targetEntity: Secteurs
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_secteur:
+                    referencedColumnName: id_secteur
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

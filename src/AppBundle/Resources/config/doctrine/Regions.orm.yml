@@ -1,0 +1,46 @@
+AppBundle\Entity\Regions:
+    type: entity
+    table: regions
+    indexes:
+        id_pays:
+            columns:
+                - id_pays
+        idx_region:
+            columns:
+                - region
+    id:
+        idRegion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_region
+            generator:
+                strategy: IDENTITY
+    fields:
+        region:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        regionEn:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: region_en
+    manyToOne:
+        idPays:
+            targetEntity: Pays
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pays:
+                    referencedColumnName: id_pays
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

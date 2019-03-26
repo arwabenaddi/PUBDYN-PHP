@@ -1,0 +1,21 @@
+AppBundle\Entity\Code:
+    type: entity
+    table: code
+    id:
+        idCode:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_code
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,107 @@
+AppBundle\Entity\Reponse:
+    type: entity
+    table: reponse
+    indexes:
+        fk_reponse_question1_idx:
+            columns:
+                - id_question
+        fk_reponse_date_questionnaire1_idx:
+            columns:
+                - id_date
+        fk_reponse_societes1_idx:
+            columns:
+                - id_societe
+        fk_reponse_sources1_idx:
+            columns:
+                - id_source
+        fk_reponse_users1_idx:
+            columns:
+                - id_user
+    uniqueConstraints:
+        idx_uniq:
+            columns:
+                - id_societe
+                - id_date
+                - id_question
+    id:
+        idReponse:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_reponse
+            generator:
+                strategy: IDENTITY
+    fields:
+        valeur:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        commentaire:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        commentaireAnalyste:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: commentaire_analyste
+    manyToOne:
+        idDate:
+            targetEntity: DateQuestionnaire
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_date:
+                    referencedColumnName: id_date
+            orphanRemoval: false
+        idQuestion:
+            targetEntity: Question
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_question:
+                    referencedColumnName: id_question
+            orphanRemoval: false
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_societe:
+                    referencedColumnName: id_societe
+            orphanRemoval: false
+        idSource:
+            targetEntity: Sources
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_source:
+                    referencedColumnName: id_source
+            orphanRemoval: false
+        idUser:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_user:
+                    referencedColumnName: id_users
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

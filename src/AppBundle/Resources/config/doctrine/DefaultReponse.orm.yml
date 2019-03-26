@@ -1,0 +1,52 @@
+AppBundle\Entity\DefaultReponse:
+    type: entity
+    table: default_reponse
+    indexes:
+        fk_default_reponse_default_reponse_type1_idx:
+            columns:
+                - id_default_reponse_type
+        idx_libelle:
+            columns:
+                - libelle
+    id:
+        idDefaultReponse:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_default_reponse
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        caracteristiques:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        caracteristiquesEn:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: caracteristiques_en
+    manyToOne:
+        idDefaultReponseType:
+            targetEntity: DefaultReponseType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_default_reponse_type:
+                    referencedColumnName: id_default_reponse_type
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,61 @@
+AppBundle\Entity\Textes:
+    type: entity
+    table: textes
+    indexes:
+        fk_textes_pages1_idx:
+            columns:
+                - id_page
+        idx_lang:
+            columns:
+                - lang
+        fk_textes_profil1_idx:
+            columns:
+                - id_profil
+    uniqueConstraints:
+        idx_profil_page_uniq:
+            columns:
+                - id_profil
+                - id_page
+                - lang
+    id:
+        idTextes:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_textes
+            generator:
+                strategy: IDENTITY
+    fields:
+        texte:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        lang:
+            type: boolean
+            nullable: true
+    manyToOne:
+        idPage:
+            targetEntity: Pages
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_page:
+                    referencedColumnName: id_page
+            orphanRemoval: false
+        idProfil:
+            targetEntity: Profil
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_profil:
+                    referencedColumnName: id_profil
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

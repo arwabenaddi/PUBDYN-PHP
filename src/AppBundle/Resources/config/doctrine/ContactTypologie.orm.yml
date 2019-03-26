@@ -1,0 +1,32 @@
+AppBundle\Entity\ContactTypologie:
+    type: entity
+    table: contact_typologie
+    indexes:
+        index2:
+            columns:
+                - libelle
+    id:
+        idContactTypologie:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_contact_typologie
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        libelleEn:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: libelle_en
+    lifecycleCallbacks: {  }

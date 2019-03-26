@@ -1,0 +1,38 @@
+AppBundle\Entity\WebserviceUser:
+    type: entity
+    table: webservice_user
+    uniqueConstraints:
+        user_UNIQUE:
+            columns:
+                - user
+    id:
+        idWebserviceUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_webservice_user
+            generator:
+                strategy: IDENTITY
+    fields:
+        user:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: true
+            length: 64
+            options:
+                fixed: false
+        serviceFunctions:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: service_functions
+    lifecycleCallbacks: {  }

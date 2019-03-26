@@ -1,0 +1,55 @@
+AppBundle\Entity\SocieteDateCommentaire:
+    type: entity
+    table: societe_date_commentaire
+    indexes:
+        fk_societe_commentaire_date_questionnaire1_idx:
+            columns:
+                - id_date
+        IDX_2187D457C7F894CD:
+            columns:
+                - id_societe
+    id:
+        idCommentaire:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_commentaire
+        lang:
+            type: boolean
+            nullable: false
+            id: true
+        idDate:
+            associationKey: true
+        idSociete:
+            associationKey: true
+    fields:
+        commentaire:
+            type: text
+            nullable: true
+            length: 16777215
+            options:
+                fixed: false
+    oneToOne:
+        idDate:
+            targetEntity: DateQuestionnaire
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_date:
+                    referencedColumnName: id_date
+            orphanRemoval: false
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_societe:
+                    referencedColumnName: id_societe
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

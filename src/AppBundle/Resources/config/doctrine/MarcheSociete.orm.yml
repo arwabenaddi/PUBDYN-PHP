@@ -1,0 +1,52 @@
+AppBundle\Entity\MarcheSociete:
+    type: entity
+    table: marche_societe
+    indexes:
+        fk_marche_societe_marches1_idx:
+            columns:
+                - id_marches
+        fk_marche_societe_marches2_idx:
+            columns:
+                - id_marche_type
+        IDX_E475E9FAC7F894CD:
+            columns:
+                - id_societe
+    id:
+        idMarches:
+            associationKey: true
+        idMarcheType:
+            associationKey: true
+        idSociete:
+            associationKey: true
+    oneToOne:
+        idMarches:
+            targetEntity: Marches
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_marches:
+                    referencedColumnName: id_marche
+            orphanRemoval: false
+        idMarcheType:
+            targetEntity: Marches
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_marche_type:
+                    referencedColumnName: id_marche_type
+            orphanRemoval: false
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_societe:
+                    referencedColumnName: id_societe
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

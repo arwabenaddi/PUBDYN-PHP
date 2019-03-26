@@ -1,0 +1,61 @@
+AppBundle\Entity\QuestionStyle:
+    type: entity
+    table: question_style
+    indexes:
+        fk_question_style_type_appartenance_sectorielle1_idx:
+            columns:
+                - id_type_app_sect
+        fk_question_style_referentiel1_idx:
+            columns:
+                - id_referentiel
+        fk_question_style_question1_idx:
+            columns:
+                - id_question
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        style:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        idQuestion:
+            targetEntity: Question
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_question:
+                    referencedColumnName: id_question
+            orphanRemoval: false
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_referentiel:
+                    referencedColumnName: id_referentiel
+            orphanRemoval: false
+        idTypeAppSect:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_app_sect:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

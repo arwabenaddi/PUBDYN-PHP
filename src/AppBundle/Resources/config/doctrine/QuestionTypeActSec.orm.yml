@@ -1,0 +1,52 @@
+AppBundle\Entity\QuestionTypeActSec:
+    type: entity
+    table: question_type_act_sec
+    indexes:
+        fk_question_type_act_sec_type_appartenance_sectorielle1_idx:
+            columns:
+                - id
+        fk_question_type_act_sec_referentiel1_idx:
+            columns:
+                - id_referentiel
+        IDX_80BC519EE62CA5DB:
+            columns:
+                - id_question
+    id:
+        idQuestion:
+            associationKey: true
+        idReferentiel:
+            associationKey: true
+        id:
+            associationKey: true
+    oneToOne:
+        idQuestion:
+            targetEntity: Question
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_question:
+                    referencedColumnName: id_question
+            orphanRemoval: false
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_referentiel:
+                    referencedColumnName: id_referentiel
+            orphanRemoval: false
+        id:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

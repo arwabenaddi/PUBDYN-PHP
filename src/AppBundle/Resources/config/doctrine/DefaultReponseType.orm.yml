@@ -1,0 +1,26 @@
+AppBundle\Entity\DefaultReponseType:
+    type: entity
+    table: default_reponse_type
+    indexes:
+        idx_libelle:
+            columns:
+                - libelle_type
+    id:
+        idDefaultReponseType:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_default_reponse_type
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelleType:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: libelle_type
+    lifecycleCallbacks: {  }

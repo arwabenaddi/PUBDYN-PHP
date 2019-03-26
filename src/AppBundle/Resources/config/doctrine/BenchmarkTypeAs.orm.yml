@@ -1,0 +1,52 @@
+AppBundle\Entity\BenchmarkTypeAs:
+    type: entity
+    table: benchmark_type_as
+    indexes:
+        fk_benchmark_type_as_type_appartenance_sectorielle1_idx:
+            columns:
+                - id_type_as_in
+        fk_benchmark_type_as_type_appartenance_sectorielle2_idx:
+            columns:
+                - id_type_as_out
+        IDX_B22E4B383739F4D9:
+            columns:
+                - id_benchmark
+    id:
+        idBenchmark:
+            associationKey: true
+        idTypeAsIn:
+            associationKey: true
+        idTypeAsOut:
+            associationKey: true
+    oneToOne:
+        idBenchmark:
+            targetEntity: Benchmark
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_benchmark:
+                    referencedColumnName: id_benchmark
+            orphanRemoval: false
+        idTypeAsIn:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_as_in:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idTypeAsOut:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_as_out:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

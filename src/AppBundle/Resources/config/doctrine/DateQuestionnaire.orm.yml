@@ -1,0 +1,30 @@
+AppBundle\Entity\DateQuestionnaire:
+    type: entity
+    table: date_questionnaire
+    indexes:
+        idx_default:
+            columns:
+                - liste_default
+    uniqueConstraints:
+        qdate_UNIQUE:
+            columns:
+                - qdate
+    id:
+        idDate:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_date
+            generator:
+                strategy: IDENTITY
+    fields:
+        qdate:
+            type: date
+            nullable: true
+        listeDefault:
+            type: boolean
+            nullable: true
+            column: liste_default
+    lifecycleCallbacks: {  }

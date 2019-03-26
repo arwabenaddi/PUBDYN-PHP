@@ -1,0 +1,3 @@
+[
+    "*/10 * * * * sh $ROOT/clevercloud/listS3OneLine.sh"
+]

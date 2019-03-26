@@ -1,0 +1,82 @@
+AppBundle\Entity\Question:
+    type: entity
+    table: question
+    indexes:
+        fk_question_default_reponse1_idx:
+            columns:
+                - id_default_reponse
+        idx_libelle:
+            columns:
+                - libelle
+    uniqueConstraints:
+        code_UNIQUE:
+            columns:
+                - code
+    id:
+        idQuestion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_question
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        libelleEn:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: libelle_en
+        code:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+        idLigne:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+            column: id_ligne
+        suffixe:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+        aide:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        aideEn:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: aide_en
+    manyToOne:
+        idDefaultReponse:
+            targetEntity: DefaultReponse
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_default_reponse:
+                    referencedColumnName: id_default_reponse
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

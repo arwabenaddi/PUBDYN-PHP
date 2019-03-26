@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}OneTrack{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <!-- Add Material font (Roboto) and Material icon as needed -->
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <!--link rel="stylesheet" href="{{ asset('css') }}" -->
+    <link rel="stylesheet" href="{{ asset('css/icon') }}">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rowReorder.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/buttons.dataTables.min.css') }}">
+    <!-- Table -->
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/util.css') }}">
+    <!-- Css spécifique -->
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}">
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body class="index-page sidebar-collapse" style="background-color:white">
+<nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav"
+     style="border-bottom: 1.5px solid #ff980096;background-color: #02395a!important;">
+
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="#" style="
+    bottom: 20px;
+">
+                <img class="img-fluid" src="{{ asset('img/logo-OneTrack.png') }}" style="width: 35%;margin-top: 5px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" id="idLogin" style="color: white;text-transform: none;     font-size: 1.25rem;">User: {{ login }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()" style="color: white;text-transform: none;     font-size: 1.25rem;">Aide</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br><br>
+
+{% block body %}{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/site.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.rowReorder.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/jszip.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.validate.js') }}"></script>
+    <script src="{{ asset('js/jquery.validate.unobtrusive.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            //init DateTimePickers
+            //materialKit.initFormExtendedDatetimepickers();
+
+            // Sliders Init
+            //  materialKit.initSliders();
+        });
+
+
+        function scrollToDownload() {
+            if ($('.section-download').length != 0) {
+                $("html, body").animate({
+                    scrollTop: $('.section-download').offset().top
+                }, 1000);
+            }
+        }
+
+        $('#example').DataTable({
+            responsive: true
+        });
+        var table = $('#tableauTypologie').DataTable({
+            responsive: true,
+            paging: false,
+            bInfo: false,
+            sDom: 't',
+        });
+
+        $('#numActif').text(table.data().count() / 8);
+        $('#myInput').on( 'keyup', function () {
+            table.column(1).search( this.value ).draw();
+        } );
+
+        function fctClick( obj){
+            // récup. de tous les INPUT de la TR passée en paramètre
+            var oInput = obj.getElementsByTagName('INPUT');
+            // affichage de la value du 1st
+
+            location.href ="/listing/"+oInput[0].value+"";
+        }
+
+    </script>
+
+
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+{% endblock %}
+<div style="background-color: #eeeeee;box-shadow: 0 -6px 35px rgba(21, 21, 21, 0.4);background-color: #000e17;border-top: 2px solid #ff9800cc;">
+    <hr style="margin:0px">
+    <div class="container flex_CenterColumn">
+        <br>
+        <br>
+        <div><img style="max-width: 270px;" src="{{ asset('img/EthiFinance-blanc.png') }}" alt="Thumbnail Image"
+                  class="img-fluid"></div>
+
+        <br>
+    </div>
+    <footer class="footer" data-background-color="black">
+        <div class="container">
+            <nav class="float-center">
+                <ul>
+                    <li>
+                        <a href="https://localhost:44384/Chat/Index#" style="
+    color: white;
+">
+                            RETOUR AU SITE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://localhost:44384/Chat/Index#" style="
+    color: white;
+">
+                            MON COMPTE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://localhost:44384/Chat/Index#" style="
+    color: white;
+">
+                            CGU
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://localhost:44384/Chat/Index#" style="
+    color: white;
+">
+                            MENTIONS LEGALES
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <br>
+            <span style="color:white">© 2019 - OneTrack - </span> <a href="#">Privacy</a>
+        </div>
+        <br>
+    </footer>
+
+
+</div>
+
+
+</body>
+
+</html>

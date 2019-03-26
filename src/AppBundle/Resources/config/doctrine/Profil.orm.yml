@@ -1,0 +1,25 @@
+AppBundle\Entity\Profil:
+    type: entity
+    table: profil
+    indexes:
+        idx_profil:
+            columns:
+                - libelle
+    id:
+        idProfil:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_profil
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

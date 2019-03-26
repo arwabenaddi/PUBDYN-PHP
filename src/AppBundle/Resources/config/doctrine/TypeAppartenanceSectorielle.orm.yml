@@ -1,0 +1,44 @@
+AppBundle\Entity\TypeAppartenanceSectorielle:
+    type: entity
+    table: type_appartenance_sectorielle
+    indexes:
+        idx_nom:
+            columns:
+                - nom
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        nomEn:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: nom_en
+        code:
+            type: string
+            nullable: true
+            length: 4
+            options:
+                fixed: false
+        codeEn:
+            type: string
+            nullable: true
+            length: 4
+            options:
+                fixed: false
+            column: code_en
+    lifecycleCallbacks: {  }

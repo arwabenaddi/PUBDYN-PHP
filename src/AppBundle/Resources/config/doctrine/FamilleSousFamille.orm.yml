@@ -1,0 +1,61 @@
+AppBundle\Entity\FamilleSousFamille:
+    type: entity
+    table: famille_sous_famille
+    indexes:
+        fk_famille_sous_famille_referentiel1_idx:
+            columns:
+                - id_referentiel
+        fk_famille_sous_famille_famille1_idx:
+            columns:
+                - id_famille
+        fk_famille_sous_famille_sous_famille1_idx:
+            columns:
+                - id_sous_famille
+        index5:
+            columns:
+                - ordre
+    id:
+        idFamille:
+            associationKey: true
+        idReferentiel:
+            associationKey: true
+        idSousFamille:
+            associationKey: true
+    fields:
+        ordre:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+    oneToOne:
+        idFamille:
+            targetEntity: Famille
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_famille:
+                    referencedColumnName: id_famille
+            orphanRemoval: false
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_referentiel:
+                    referencedColumnName: id_referentiel
+            orphanRemoval: false
+        idSousFamille:
+            targetEntity: SousFamille
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_sous_famille:
+                    referencedColumnName: id_sous_famille
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

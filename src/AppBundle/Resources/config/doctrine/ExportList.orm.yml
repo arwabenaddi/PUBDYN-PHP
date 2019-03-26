@@ -1,0 +1,43 @@
+AppBundle\Entity\ExportList:
+    type: entity
+    table: export_list
+    indexes:
+        idx_libelle:
+            columns:
+                - libelle
+    id:
+        idExportList:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_export_list
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    manyToMany:
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idExportList
+            joinTable:
+                name: export_list_societe
+                joinColumns:
+                    -
+                        name: id_export_list
+                        referencedColumnName: id_export_list
+                inverseJoinColumns:
+                    -
+                        name: id_societe
+                        referencedColumnName: id_societe
+            orderBy: null
+    lifecycleCallbacks: {  }

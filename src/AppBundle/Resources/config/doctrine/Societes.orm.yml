@@ -1,0 +1,280 @@
+AppBundle\Entity\Societes:
+    type: entity
+    table: societes
+    indexes:
+        fk_societes_pays1:
+            columns:
+                - id_pays
+        liste_defaut:
+            columns:
+                - liste_default
+        fk_societes_type_modele_affichage1:
+            columns:
+                - Modele_Aff
+        fk_societes_soussecteurs1:
+            columns:
+                - id_soussecteur
+        fk_societes_type_appartenance_sectorielle1:
+            columns:
+                - id_type_appartenance_sectorielle
+        idx_nom:
+            columns:
+                - Nom
+        fk_societes_secteurs1:
+            columns:
+                - id_secteur
+        fk_societes_regions1:
+            columns:
+                - id_region
+    id:
+        idSociete:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_societe
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: Nom
+        descriptionActivite:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: Description_Activite
+        descriptionActiviteEn:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: Description_Activite_en
+        adresse:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: ''
+            column: Adresse
+        codePostal:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+                default: ''
+            column: Code_Postal
+        ville:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+                default: ''
+            column: Ville
+        tel1:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+                default: ''
+            column: Tel1
+        tel2:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+                default: ''
+            column: Tel2
+        fax:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+                default: ''
+            column: Fax
+        siteWeb:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: ''
+            column: Site_Web
+        dateIpo:
+            type: date
+            nullable: true
+            column: DATE_IPO
+        socComm:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: ''
+            column: Soc_Comm
+        siteSocComm:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: ''
+            column: Site_Soc_Comm
+        nomContSocComm:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: ''
+            column: Nom_Cont_Soc_Comm
+        emailContSocComm:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: ''
+            column: Email_Cont_Soc_Comm
+        siteCob:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                default: ''
+            column: Site_Cob
+        listeDefault:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: liste_default
+    manyToOne:
+        idPays:
+            targetEntity: Pays
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pays:
+                    referencedColumnName: id_pays
+            orphanRemoval: false
+        idRegion:
+            targetEntity: Regions
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_region:
+                    referencedColumnName: id_region
+            orphanRemoval: false
+        idSecteur:
+            targetEntity: Secteurs
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_secteur:
+                    referencedColumnName: id_secteur
+            orphanRemoval: false
+        idSoussecteur:
+            targetEntity: Soussecteurs
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_soussecteur:
+                    referencedColumnName: id_ssecteur
+            orphanRemoval: false
+        idTypeAppartenanceSectorielle:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_appartenance_sectorielle:
+                    referencedColumnName: id
+            orphanRemoval: false
+        modeleAff:
+            targetEntity: TypeModeleAffichage
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Modele_Aff:
+                    referencedColumnName: id_type_modele_affichage
+            orphanRemoval: false
+    manyToMany:
+        idUsers:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idSociete
+            joinTable:
+                name: societe_analyste
+                joinColumns:
+                    -
+                        name: id_societe
+                        referencedColumnName: id_societe
+                inverseJoinColumns:
+                    -
+                        name: id_users
+                        referencedColumnName: id_users
+            orderBy: null
+        idCode:
+            targetEntity: Code
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idSociete
+            joinTable:
+                name: societes_code
+                joinColumns:
+                    -
+                        name: id_societe
+                        referencedColumnName: id_societe
+                inverseJoinColumns:
+                    -
+                        name: id_code
+                        referencedColumnName: id_code
+            orderBy: null
+        idIndiceBoursier:
+            targetEntity: IndiceBoursier
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idSociete
+            joinTable:
+                name: societes_indice_boursier
+                joinColumns:
+                    -
+                        name: id_societe
+                        referencedColumnName: id_societe
+                inverseJoinColumns:
+                    -
+                        name: id_indice_boursier
+                        referencedColumnName: id_indice_boursier
+            orderBy: null
+    lifecycleCallbacks: {  }

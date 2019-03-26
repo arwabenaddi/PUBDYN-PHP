@@ -1,0 +1,52 @@
+AppBundle\Entity\UsersContacts:
+    type: entity
+    table: users_contacts
+    indexes:
+        fk_users_contacts_societes1_idx:
+            columns:
+                - id_societe
+        fk_users_contacts_contact1_idx:
+            columns:
+                - id_contact
+        IDX_48013EA9FA06E4D9:
+            columns:
+                - id_users
+    id:
+        idContact:
+            associationKey: true
+        idSociete:
+            associationKey: true
+        idUsers:
+            associationKey: true
+    oneToOne:
+        idContact:
+            targetEntity: Contact
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_contact:
+                    referencedColumnName: id_contact
+            orphanRemoval: false
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_societe:
+                    referencedColumnName: id_societe
+            orphanRemoval: false
+        idUsers:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_users:
+                    referencedColumnName: id_users
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

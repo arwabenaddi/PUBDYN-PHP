@@ -1,0 +1,36 @@
+AppBundle\Entity\SessionCache:
+    type: entity
+    table: session_cache
+    indexes:
+        fk_session_cache_session1_idx:
+            columns:
+                - session_id
+    id:
+        variable:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: true
+            id: true
+        session:
+            associationKey: true
+    fields:
+        valeur:
+            type: text
+            nullable: true
+            length: 16777215
+            options:
+                fixed: false
+    oneToOne:
+        session:
+            targetEntity: Session
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                session_id:
+                    referencedColumnName: session_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

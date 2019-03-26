@@ -1,0 +1,50 @@
+AppBundle\Entity\MailingList:
+    type: entity
+    table: mailing_list
+    indexes:
+        idx_libelle:
+            columns:
+                - libelle
+    id:
+        idMailingList:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_mailing_list
+            generator:
+                strategy: IDENTITY
+    fields:
+        libelle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        replyAdress:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: reply_adress
+    manyToMany:
+        idUsers:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idMailingList
+            joinTable:
+                name: mailing_list_users
+                joinColumns:
+                    -
+                        name: id_mailing_list
+                        referencedColumnName: id_mailing_list
+                inverseJoinColumns:
+                    -
+                        name: id_users
+                        referencedColumnName: id_users
+            orderBy: null
+    lifecycleCallbacks: {  }

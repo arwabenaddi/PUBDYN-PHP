@@ -1,0 +1,32 @@
+AppBundle\Entity\MarcheType:
+    type: entity
+    table: marche_type
+    indexes:
+        idx_nom:
+            columns:
+                - nom
+    id:
+        idMarcheType:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_marche_type
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        nomEn:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: nom_en
+    lifecycleCallbacks: {  }

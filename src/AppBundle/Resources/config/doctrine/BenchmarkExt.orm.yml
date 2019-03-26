@@ -1,0 +1,29 @@
+AppBundle\Entity\BenchmarkExt:
+    type: entity
+    table: benchmark_ext
+    indexes:
+        fk_benchmark_ext_benchmark1_idx:
+            columns:
+                - id_benchmark
+    id:
+        idBenchmarkExt:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_benchmark_ext
+        idBenchmark:
+            associationKey: true
+    oneToOne:
+        idBenchmark:
+            targetEntity: Benchmark
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_benchmark:
+                    referencedColumnName: id_benchmark
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

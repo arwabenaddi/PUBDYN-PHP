@@ -1,0 +1,60 @@
+AppBundle\Entity\SousFamillePonderations:
+    type: entity
+    table: sous_famille_ponderations
+    indexes:
+        fk_sous_famille_ponderations_sous_famille1_idx:
+            columns:
+                - id_sous_famille
+        fk_sous_famille_ponderations_referentiel1_idx:
+            columns:
+                - id_referentiel
+        fk_sous_famille_ponderations_type_appartenance_sectorielle1_idx:
+            columns:
+                - id_type_app_sect
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ponderation:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+    manyToOne:
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_referentiel:
+                    referencedColumnName: id_referentiel
+            orphanRemoval: false
+        idSousFamille:
+            targetEntity: SousFamille
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_sous_famille:
+                    referencedColumnName: id_sous_famille
+            orphanRemoval: false
+        idTypeAppSect:
+            targetEntity: TypeAppartenanceSectorielle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_app_sect:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

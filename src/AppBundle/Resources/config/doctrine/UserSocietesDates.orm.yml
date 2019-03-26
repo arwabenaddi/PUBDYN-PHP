@@ -1,0 +1,58 @@
+AppBundle\Entity\UserSocietesDates:
+    type: entity
+    table: user_societes_dates
+    indexes:
+        fk_user_societes_societes1_idx:
+            columns:
+                - id_societe
+        fk_user_societes_date_questionnaire1_idx:
+            columns:
+                - id_date
+        fk_user_societes_users1:
+            columns:
+                - id_users
+    id:
+        idDate:
+            associationKey: true
+        idSociete:
+            associationKey: true
+        idUsers:
+            associationKey: true
+    fields:
+        acl:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+    oneToOne:
+        idDate:
+            targetEntity: DateQuestionnaire
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_date:
+                    referencedColumnName: id_date
+            orphanRemoval: false
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_societe:
+                    referencedColumnName: id_societe
+            orphanRemoval: false
+        idUsers:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_users:
+                    referencedColumnName: id_users
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

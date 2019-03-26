@@ -1,0 +1,72 @@
+variables:
+    GIT_STRATEGY: clone
+
+stages:
+    - package
+    - deploy
+
+package:
+    stage: package
+    script:
+        - git archive --format=tar --output=$CI_PROJECT_NAME.tar HEAD
+    tags:
+        - docker
+    artifacts:
+        name: $CI_PROJECT_NAME
+        expire_in: 1 weeks
+        paths:
+            - $CI_PROJECT_NAME.tar
+    only:
+        - master
+
+deploy-prod:
+    stage: deploy
+    image: samueldebruyn/debian-git
+    environment:
+        name: prod
+        url: http://pubdyn.cleverapps.io/
+    variables:
+        APPLICATION_ID: app_c504814d-d6a9-4d2d-ba68-3ab3da0d9089
+        PACKAGE: $CI_PROJECT_NAME.tar        
+    before_script:
+        ##
+        ## Install ssh-agent if not already installed, it is required by Docker.
+        ## (change apt-get to yum if you use an RPM-based image)
+        ##
+        - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+        ##
+        ## Run ssh-agent (inside the build environment)
+        ##
+        - eval $(ssh-agent -s)
+        ##
+        ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+        ## We're using tr to fix line endings which makes ed25519 keys work
+        ## without extra base64 encoding.
+        ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
+        ##
+        - echo "$SSH_PRIV_KEY" | tr -d '\r' | ssh-add - > /dev/null
+        ##
+        ## Create the SSH directory and give it the right permissions
+        ##
+        - mkdir -p ~/.ssh
+        - git config --global user.email "info@spreadresearch.com"
+        - git config --global user.name "CI Spread Research"
+        - ssh-keyscan push-par-clevercloud-customers.services.clever-cloud.com >> ~/.ssh/known_hosts   
+    script:                         
+        - git clone git+ssh://git@push-par-clevercloud-customers.services.clever-cloud.com/app_c504814d-d6a9-4d2d-ba68-3ab3da0d9089.git dist
+        - cd dist/ && git rm -r * > /dev/null && cp -f ../$PACKAGE $PACKAGE
+        - tar xf $PACKAGE
+        - rm -f $PACKAGE
+        - DEPLOY_DATE=$(date +%Y-%m-%d_%Hh-%Mm-%Ss)
+        - echo $DEPLOY_DATE > deploy-date
+        - git add .
+        - git status 
+        - git commit -m $DEPLOY_DATE
+        - git push origin master
+    dependencies:
+        - package
+    tags:
+        - docker
+    only:
+        - master
+    when: manual

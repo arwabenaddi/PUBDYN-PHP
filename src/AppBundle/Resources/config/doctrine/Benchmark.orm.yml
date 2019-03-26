@@ -1,0 +1,73 @@
+AppBundle\Entity\Benchmark:
+    type: entity
+    table: benchmark
+    indexes:
+        def:
+            columns:
+                - defaut
+        nomord:
+            columns:
+                - nom
+    id:
+        idBenchmark:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_benchmark
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        nomEn:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: nom_en
+        defaut:
+            type: boolean
+            nullable: true
+    manyToMany:
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idBenchmark
+            joinTable:
+                name: benchmark_societe
+                joinColumns:
+                    -
+                        name: id_benchmark
+                        referencedColumnName: id_benchmark
+                inverseJoinColumns:
+                    -
+                        name: id_societe
+                        referencedColumnName: id_societe
+            orderBy: null
+        idUsers:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idBenchmark
+            joinTable:
+                name: benchmark_users
+                joinColumns:
+                    -
+                        name: id_benchmark
+                        referencedColumnName: id_benchmark
+                inverseJoinColumns:
+                    -
+                        name: id_users
+                        referencedColumnName: id_users
+            orderBy: null
+    lifecycleCallbacks: {  }

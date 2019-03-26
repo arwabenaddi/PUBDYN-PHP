@@ -1,0 +1,171 @@
+AppBundle\Entity\Users:
+    type: entity
+    table: users
+    indexes:
+        id_profil:
+            columns:
+                - id_profil
+        idx_prenom:
+            columns:
+                - prenom
+        idx_creatdate:
+            columns:
+                - creatdate
+        idx_abostartdate:
+            columns:
+                - abonnementstartdate
+        idx_lastpwd:
+            columns:
+                - lastpwdchange
+        id_societe:
+            columns:
+                - id_societe
+        idx_nom:
+            columns:
+                - nom
+        idx_login:
+            columns:
+                - login
+        idx_abodate:
+            columns:
+                - abonnementdate
+        idx_lastlogin:
+            columns:
+                - lastlogin
+        id_pays:
+            columns:
+                - id_pays
+    uniqueConstraints:
+        login_passwd:
+            columns:
+                - passwd
+                - login
+    id:
+        idUsers:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_users
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+        login:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+        passwd:
+            type: string
+            nullable: false
+            length: 64
+            options:
+                fixed: false
+        mail:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        tel:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        commentaire:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        valid:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        creatdate:
+            type: date
+            nullable: true
+        abonnementdate:
+            type: date
+            nullable: true
+        abonnementstartdate:
+            type: date
+            nullable: true
+        lastlogin:
+            type: datetime
+            nullable: true
+        lastpwdchange:
+            type: datetime
+            nullable: true
+        prefs:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        idPays:
+            targetEntity: Pays
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pays:
+                    referencedColumnName: id_pays
+            orphanRemoval: false
+        idProfil:
+            targetEntity: Profil
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_profil:
+                    referencedColumnName: id_profil
+            orphanRemoval: false
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_societe:
+                    referencedColumnName: id_societe
+            orphanRemoval: false
+    manyToMany:
+        idReferentiel:
+            targetEntity: Referentiel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idUsers
+            joinTable:
+                name: user_referentiels
+                joinColumns:
+                    -
+                        name: id_users
+                        referencedColumnName: id_users
+                inverseJoinColumns:
+                    -
+                        name: id_referentiel
+                        referencedColumnName: id_referentiel
+            orderBy: null
+    lifecycleCallbacks: {  }

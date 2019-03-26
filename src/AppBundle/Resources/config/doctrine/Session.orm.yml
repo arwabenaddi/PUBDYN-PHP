@@ -1,0 +1,35 @@
+AppBundle\Entity\Session:
+    type: entity
+    table: session
+    indexes:
+        idx_expir:
+            columns:
+                - session_expires
+    id:
+        sessionId:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: true
+                default: ''
+            id: true
+            column: session_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        sessionExpires:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+                default: '0'
+            column: session_expires
+        sessionData:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: session_data
+    lifecycleCallbacks: {  }

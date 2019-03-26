@@ -1,0 +1,32 @@
+AppBundle\Entity\UniversElements:
+    type: entity
+    table: univers_elements
+    indexes:
+        name:
+            columns:
+                - name
+                - element
+    id:
+        idUniversElements:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_univers_elements
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+        element:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

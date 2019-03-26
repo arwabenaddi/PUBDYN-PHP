@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container" style="/* min-height:360px; */">
+        <main role="main" class="pb-3" style="padding-bottom: 0px!important;">
+            <form class="shadow" style="background-color: #e9e7ec;border-radius: 7px;padding: 0px 20px 7px 20px;box-shadow: 3px 9px 17px 3px rgba(108, 117, 125, 0.4)!important;">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 style="padding-top: 13px;">Recherche</h3></div>
+                    <div class="panel-body">
+                        <div class="row">
+                                <div class="col-8">
+                                    <input type="text" style="width:100%;border: 1px solid #9e9999;" placeholder="Rechercher..." class="form-control valid" id="myInput" name="search" value="" aria-invalid="false"></div>
+                                <div class="col-4">
+                                    <a style="width:100%;font-size: 18px;padding: 10px;background-color: #fdc652;" class="btn btn-primary" href="#">Recherche</a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+            </form>
+            <div class="row" style="margin-top: 28px;"><div class="col-8" style=""><div class="form-group pull-left" style="margin-bottom: 0px;">
+                        <h2 style="margin-top: 0px;">Liste des Actifs</h2>
+                    </div>
+                </div>
+                <div class="col-4" style="margin-top: 7px;padding-left: 3px; display: none;">
+                    <a style="width:100%;font-size: 18px;padding: 10px;background-color: #fdc652;" class="btn btn-primary" href="#">Exporter Les Données</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <div class="container " style="min-height:360px;margin-top: 26px;padding: 25px 40px 11px 40px;border-radius: 8px;box-shadow: 3px 3px 17px 3px rgba(108, 117, 125, 0.5);">
+        <div class="row">
+            <div class="col-8">
+                <h6 style="text-shadow: none;margin: 13px;" class="row"><div  id="numActif"></div><div>Actifs</div> </h6>
+            </div>
+            <div class="col-4 float-right">
+                <a class="btn btn-primary btn-flat-info float-right" href="https://localhost:44384/Chat/LstChats" style="width: 100%;background-color: grey;font-size: 17px;padding: 9px;   display: none;">Affichage Tableau</a>
+            </div>
+        </div>
+        <main role="main " class="pb-3">
+            <asp:panel id="Panel1">
+                <div id="accordion">
+                    <div class="card bounceInUp">
+                        <ul class="nav nav-pills nav-pills-icons collapsed" role="tablist" id="HABYSSIN"
+                            style="box-shadow:none;margin:0px;background:transparent;padding:0px" data-toggle="collapse"
+                            data-target="#CABYSSIN" aria-expanded="false" aria-controls="CABYSSIN">
+                            <li id="test" onclick="liClicked('ABYSSIN')" class="nav-item" style="width:100%">
+                                <a class="nav-link" style="display: flex;">
+                                    <div class="col-sm-11">
+                                        <h6>Affichage tableau</h6>
+                                    </div>
+                                    <div id="plusABYSSIN" class="col-sm-1">
+                                        <h5 style="margin: 6px;">+</h5>
+                                    </div>
+                                    <div id="moinsABYSSIN" class="col-sm-1 " style="display:none">
+                                        <h3 style="margin: 6px; ">-</h3>
+                                    </div>
+                                </a>
+
+                            </li>
+                        </ul>
+                        <div id="CABYSSIN" class="collapse" aria-labelledby="HABYSSIN" data-parent="#accordion"
+                             style="">
+                            <div class="card-body">
+                                <div class="row" style="">
+
+                                    <div class="row" style="">
+                                        <div class="table100 ver6 ">
+                                            <table data-vertable="ver6" class="table-striped" id="tableauTypologie" style="width:100%">
+                                                <thead>
+                                                <tr class="row100 head">
+                                                    <th style="display: none;"></th>
+                                                    <th class="column100 column1 text-S" data-column="column1"> Nom</th>
+                                                    <th  class="column100 column2 text-S" data-column="column2">Classe d'actifs</th>
+                                                    <th  class="column100 column3 text-S" data-column="column3">Catégorie</th>
+                                                    <th  class="column100 column4 text-S" data-column="column4">Secteur d'activité</th>
+                                                    <th  class="column100 column5 text-S" data-column="column5">Note Générale</th>
+                                                    <th  class="column100 column6 text-S" data-column="column6">Taux de réponse</th>
+                                                    <th  class="column100 column7 text-S" data-column="column7">Benchmark</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for test in tests %}
+                                                    <tr ondblclick="fctClick( this)"  class="row100">
+                                                        <td ><input type="hidden" id="{{ test.getIdSociete().idSociete }}" value="{{ test.getIdSociete().idSociete }}/{{ referentiel }}"></td>
+                                                        <td class="column100 column1 text-S" data-column="column1 text-S">{{ test.getIdSociete().getNom() }}</td>
+                                                        <td class="column100 column2" data-column="column2">{{ test.marche}}</td>
+                                                        <td class="column100 column3" data-column="column3">{{ test.getIdSociete().idTypeAppartenanceSectorielle.getNom() }}</td>
+                                                        <td class="column100 column4" data-column="column4">{{ test.getIdSociete().idSecteur.getSecteur() }}</td>
+                                                        <td class="column100 column5" data-column="column5">22%</td>
+                                                        <td class="column100 column6" data-column="column6">22%</td>
+                                                        <td class="column100 column7" data-column="column7">22%</td>
+                                                    </tr>
+
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </asp:panel>
+
+        </main>
+    </div>
+    <br><br><br><br><br><br>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

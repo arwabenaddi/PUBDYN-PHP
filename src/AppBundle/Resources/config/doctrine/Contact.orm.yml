@@ -1,0 +1,113 @@
+AppBundle\Entity\Contact:
+    type: entity
+    table: contact
+    indexes:
+        id_societe:
+            columns:
+                - id_societe
+        fk_contact_contact_typologie1_idx:
+            columns:
+                - id_contact_typologie
+        idx_mail_status:
+            columns:
+                - mail_status
+        id_type:
+            columns:
+                - id_type_contact
+        idx_hash:
+            columns:
+                - nom_hash
+        id_mail_hash:
+            columns:
+                - mail_hash
+    id:
+        idContact:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_contact
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: true
+            length: 448
+            options:
+                fixed: false
+        mail:
+            type: string
+            nullable: true
+            length: 448
+            options:
+                fixed: false
+        phone:
+            type: string
+            nullable: true
+            length: 172
+            options:
+                fixed: false
+        defaultContact:
+            type: boolean
+            nullable: true
+            column: default_contact
+        entite:
+            type: string
+            nullable: true
+            length: 448
+            options:
+                fixed: false
+        nomHash:
+            type: string
+            nullable: true
+            length: 64
+            options:
+                fixed: true
+            column: nom_hash
+        mailStatus:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+            column: mail_status
+        mailHash:
+            type: string
+            nullable: true
+            length: 64
+            options:
+                fixed: true
+            column: mail_hash
+    manyToOne:
+        idContactTypologie:
+            targetEntity: ContactTypologie
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_contact_typologie:
+                    referencedColumnName: id_contact_typologie
+            orphanRemoval: false
+        idSociete:
+            targetEntity: Societes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_societe:
+                    referencedColumnName: id_societe
+            orphanRemoval: false
+        idTypeContact:
+            targetEntity: ContactType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_contact:
+                    referencedColumnName: id_contact_type
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

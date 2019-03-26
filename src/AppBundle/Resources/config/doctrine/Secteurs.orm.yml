@@ -1,0 +1,32 @@
+AppBundle\Entity\Secteurs:
+    type: entity
+    table: secteurs
+    indexes:
+        idx_secteur:
+            columns:
+                - secteur
+    id:
+        idSecteur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_secteur
+            generator:
+                strategy: IDENTITY
+    fields:
+        secteur:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        secteurEn:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: secteur_en
+    lifecycleCallbacks: {  }

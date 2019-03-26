@@ -24,9 +24,9 @@ deploy-prod:
     image: samueldebruyn/debian-git
     environment:
         name: prod
-        url: http://pubdyn.cleverapps.io/
+        url: http://app-81cd652f-c489-40d7-bd9a-137afd06953a.cleverapps.io /
     variables:
-        APPLICATION_ID: app_c504814d-d6a9-4d2d-ba68-3ab3da0d9089
+        APPLICATION_ID: app_81cd652f-c489-40d7-bd9a-137afd06953a
         PACKAGE: $CI_PROJECT_NAME.tar        
     before_script:
         ##

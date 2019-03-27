@@ -50,21 +50,19 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //     echo $e->getMessage().PHP_EOL;
 // }
 // Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
+
+$keyname = 'buwd3fyvnjp7yxrdicdgtest.sql';
+
 try {
-    $objects = $s3->listObjects([
-      
-       'Bucket'=>$bucket
-       
+    // Get the object.
+    $result = $s3->getObject([
+        'Bucket' => $bucket,
+        'Key'    => $keyname
     ]);
-    foreach ($objects['Contents']  as $object) {
-       
-        echo $object['key'].PHP_EOL;
-        
-    }
 
-
- }
-
+    // Display the object in the browser.
+    header("Content-Type: {$result['ContentType']}");
+    echo $result['Body'];
 
 catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

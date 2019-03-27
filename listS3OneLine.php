@@ -1,4 +1,3 @@
-
 <?php
 // Decode the argument of the batch
 $racine=substr($argv[0],0,strpos($argv[0], "list"));
@@ -34,7 +33,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         ],
         'endpoint'=>"https://".$CELLAR_ADDON_HOST
       ]);
-
 //Utilisez les itérateurs de haut niveau (renvoie TOUS vos objets)
 //Use the high-level iterators (returns ALL of your objects).
 // try {
@@ -52,7 +50,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // } catch (S3Exception $e) {
 //     echo $e->getMessage().PHP_EOL;
 // }
-
 //Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
  try {
     $objects = $s3->listObjects([
@@ -62,15 +59,11 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     ]);
    foreach ($objects['Contents']  as $object) {
        
-       echo $object['key'].PHP_EOL;
+        $read = readfile($object['Key'].PHP_EOL);
          
    
    }
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }
-
-$filenames = readfile($object['key'].PHP_EOL); 
-
-
 ?>

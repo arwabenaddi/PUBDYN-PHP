@@ -72,13 +72,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 
 
-    $buckets = $s3->listBuckets();
+    $buckets = $s3->listObjects();
     //echo var_dump($buckets);
     //Echo "\n---\n";
     echo "at date ".date("Y-m-d H:i:s")." - Buckets are : ";
 
-    foreach ($buckets['Buckets'] as $bucket) {
-        echo $bucket['Name'] . ", ";
+    foreach ($buckets['Contents'] as $bucket) {
+        echo $bucket['Name'].",";
     }
     echo "END";
 

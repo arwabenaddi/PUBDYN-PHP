@@ -58,9 +58,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        
     ]);
    foreach ($objects['Contents']  as $object) {
-        echo 'nom de fichier <br>';
-    
-        echo $object['key'].PHP_EOL;
+            echo $object['key'].PHP_EOL;
     
     if (isset($object)) {
 

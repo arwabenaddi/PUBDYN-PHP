@@ -67,12 +67,7 @@ try {
         'Bucket' => $bucket,
          'key' => 'buwd3fyvnjp7yxrdicdgtest.sql'
     ]);
-    echo $objects;
-    foreach ($objects['Contents']  as $object) {
-         header("Content-Type: {$results3['ContentType']}");
-         echo $results3['Body'];
-        
-    }
+     echo $objects;
     // Display the object in the browser.
 
  } catch (S3Exception $e) {

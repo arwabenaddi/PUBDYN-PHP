@@ -61,7 +61,7 @@ try {
     ]);
 
     // Display the object in the browser.
-    header("Content-Type: {$result['ContentType']}");
+//     header("Content-Type: {$result['ContentType']}");
     echo $result['Body'];
 }
 catch (S3Exception $e) {

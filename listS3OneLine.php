@@ -64,15 +64,9 @@ try {
 
     // Get the object.
     $results = $s3->getObject([
-        'Bucket' => $bucket
+        'Bucket' => $bucket,
+         'key' => 'buwd3fyvnjp7yxrdicdgtest.sql'
     ]);
-    $results3 = '';
-    foreach ($results['Contents']  as $result ) {
-       
-        echo $result['key'].PHP_EOL;
-        $results3 = $result['key']
-        return $results3 ;
-    }
     // Display the object in the browser.
     header("Content-Type: {$results3['ContentType']}");
     echo $results3['Body'];

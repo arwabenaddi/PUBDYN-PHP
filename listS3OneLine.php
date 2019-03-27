@@ -66,10 +66,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     echo $e->getMessage().PHP_EOL;
  }
 
-$FileHandle = fopen('C:\Users\aroua.benaddi\Desktop\testcopie.sql', 'w+');
-$Connection->get_object('new-bucket-10ed2760', 'testcopie.sql', array(
-        'fileDownload' => $FileHandle,
-));
+
 // // Temporary variable, used to store current query
 // $templine = '';
 // // Read in entire file

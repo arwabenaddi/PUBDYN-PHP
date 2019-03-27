@@ -64,17 +64,7 @@ try {
 
 
  }
-catch{
 
-    // Get the object.
-    $objects = $s3->getObject([
-        'Bucket' => $bucket,
-         'key' => '$object['key']'
-    ]);
-     echo $objects;
-    // Display the object in the browser.
-
-}
 
 catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

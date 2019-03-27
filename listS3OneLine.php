@@ -44,49 +44,53 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //             echo $object['Key'].PHP_EOL;
 //             $bd = $object['Key'].PHP_EOL;
 //             $filebd = file_get_contents($bd);
+//             echo 'contenu de fichier : '$filebd;
 //         }
 //     }
 // } catch (S3Exception $e) {
 //     echo $e->getMessage().PHP_EOL;
 // }
-// Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
-
-// $keyname = 'buwd3fyvnjp7yxrdicdgtest.sql';
-echo 'bbbbbbb';
-try {
-     $objects = $s3->listObjects([
+//Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
+ try {
+    $objects = $s3->listObjects([
       
       'Bucket'=>$bucket
        
     ]);
    foreach ($objects['Contents']  as $object) {
        
-       echo $object['key'].PHP_EOL;
-         
-   
+        echo $object['Key'].PHP_EOL;
+           
    }
- echo 'vvvvvvvvvvv';
-// //  $name = '';
-//  $keyname = $s3->listObjects([
-//             'Bucket'=>$bucket       
-//     ]);
-//    foreach ($keyname['Contents']  as $object) {       
-//        echo $object['key'].PHP_EOL;       
-// //        $name = $object['key'] ; 
-//    }
- 
-//   echo '<br><br><br>'.$name;
-   //     // Get the object.
-//     $result = $s3->getObject([
-//         'Bucket' => $bucket,
-//         'Key'    => $name 
-//     ]);
-
-    // Display the object in the browser.
-//     header("Content-Type: {$result['ContentType']}");
-//     echo $result['Body'];
-}
-catch (S3Exception $e) {
+ } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
-}
+ }
+// // Temporary variable, used to store current query
+// $templine = '';
+// // Read in entire file
+// $filename =  $object['Key'].PHP_EOL;
+// //  echo $contents;
+// //  $contents = str_replace(' ','',$contents);
+// // $lines = str_replace(CHR(13).CHR(10),"",$contents);
+//  $lines = file($filename);
+// // Loop through each line
+// foreach ($lines as $line)
+// {
+// // Skip it if it's a comment
+// // || $line == str_replace(CHR(13).CHR(10),"",$line) 
+// if (substr($line,0,2) == '--' || $line == '' )
+//     continue;
+// // Add this line to the current segment
+// $templine = $line;
+// // If it has a semicolon at the end, it's the end of the query
+// if (substr(trim($line), -1, 1) == ';')
+// {
+//     // $line = str_replace(CHR(13).CHR(10),"",$line);
+//     // Perform the query
+//     // $insertfile = "INSERT INTO db VALUES ($templine)";
+//     mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+//     // Reset temp variable to empty
+//     $templine = '';
+// }
+// }
 ?>

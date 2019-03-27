@@ -70,8 +70,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     echo $e->getMessage().PHP_EOL;
  }
 
-        echo 'sans PHP_EOL : ' $object['Key'];
-        echo 'avec  PHP_EOL : ' $object['Key'].PHP_EOL;
+        echo $object['Key'];
+        echo $object['Key'].PHP_EOL;
 
 
 

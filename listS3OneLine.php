@@ -65,10 +65,22 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         $name =  $object['Key'].PHP_EOL;
            
    }
+  
+  
+        // Get the object.
+    $result = $s3->getObject([
+        'Bucket' => $bucket,
+        'Key'    => $name 
+    ]);
+//     Display the object in the browser.
+//     header("Content-Type: {$result['ContentType']}");
+    echo $result['Body'];
+  
+  
+  
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }
-  echo $name;
 // // Temporary variable, used to store current query
 // $templine = '';
 // // Read in entire file

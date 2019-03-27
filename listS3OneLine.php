@@ -72,7 +72,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 
 
-    $buckets = $s3Client->listBuckets();
+    $buckets = $s3->listBuckets();
     //echo var_dump($buckets);
     //Echo "\n---\n";
     echo "at date ".date("Y-m-d H:i:s")." - Buckets are : ";

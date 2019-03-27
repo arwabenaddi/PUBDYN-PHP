@@ -66,38 +66,41 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     echo $e->getMessage().PHP_EOL;
  }
 
+$FileHandle = fopen('C:\Users\aroua.benaddi\Desktop\testcopie.sql', 'w+');
+$Connection->get_object('new-bucket-10ed2760', 'testcopie.sql', array(
+        'fileDownload' => $FileHandle,
+));
+// // Temporary variable, used to store current query
+// $templine = '';
+// // Read in entire file
+// $filename =  $object['Key'].PHP_EOL;
 
-// Temporary variable, used to store current query
-$templine = '';
-// Read in entire file
-$filename =  $object['Key'].PHP_EOL;
+// //  echo $contents;
+// //  $contents = str_replace(' ','',$contents);
 
-//  echo $contents;
-//  $contents = str_replace(' ','',$contents);
+// // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 
-// $lines = str_replace(CHR(13).CHR(10),"",$contents);
+//  $lines = file($filename);
+// // Loop through each line
+// foreach ($lines as $line)
+// {
+// // Skip it if it's a comment
+// // || $line == str_replace(CHR(13).CHR(10),"",$line) 
+// if (substr($line,0,2) == '--' || $line == '' )
+//     continue;
 
- $lines = file($filename);
-// Loop through each line
-foreach ($lines as $line)
-{
-// Skip it if it's a comment
-// || $line == str_replace(CHR(13).CHR(10),"",$line) 
-if (substr($line,0,2) == '--' || $line == '' )
-    continue;
+// // Add this line to the current segment
+// $templine = $line;
 
-// Add this line to the current segment
-$templine = $line;
-
-// If it has a semicolon at the end, it's the end of the query
-if (substr(trim($line), -1, 1) == ';')
-{
-    // $line = str_replace(CHR(13).CHR(10),"",$line);
-    // Perform the query
-    // $insertfile = "INSERT INTO db VALUES ($templine)";
-    mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-    // Reset temp variable to empty
-    $templine = '';
-}
-}
+// // If it has a semicolon at the end, it's the end of the query
+// if (substr(trim($line), -1, 1) == ';')
+// {
+//     // $line = str_replace(CHR(13).CHR(10),"",$line);
+//     // Perform the query
+//     // $insertfile = "INSERT INTO db VALUES ($templine)";
+//     mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+//     // Reset temp variable to empty
+//     $templine = '';
+// }
+// }
 ?>

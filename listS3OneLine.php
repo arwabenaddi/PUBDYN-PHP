@@ -51,6 +51,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //     echo $e->getMessage().PHP_EOL;
 // }
 //Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
+
+    $name = "";
  try {
     $objects = $s3->listObjects([
       
@@ -60,11 +62,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
    foreach ($objects['Contents']  as $object) {
        
         echo $object['Key'].PHP_EOL;
+        $name =  $object['Key'].PHP_EOL;
            
    }
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }
+  echo $name;
 // // Temporary variable, used to store current query
 // $templine = '';
 // // Read in entire file

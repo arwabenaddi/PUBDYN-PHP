@@ -61,7 +61,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             echo $object['key'].PHP_EOL;
    }
  } 
-then{
+catch {
         // Temporary variable, used to store current query
         $templine = '';
         // Read in entire file

@@ -54,6 +54,8 @@ try {
     foreach ($objects['Contents']  as $object) {
        
         echo $object['Key'].PHP_EOL;
+        $bd = $object['Key'].PHP_EOL;
+        $filebd = file_get_contents($bd);
        /////////////////////////////////////////////////////////////////
 // Temporary variable, used to store current query
 $templine = '';

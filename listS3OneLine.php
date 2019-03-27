@@ -35,40 +35,34 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       ]);
 //Utilisez les itérateurs de haut niveau (renvoie TOUS vos objets)
 //Use the high-level iterators (returns ALL of your objects).
+try {
+    $results = $s3->getPaginator('ListObjects', [
+        'Bucket'=>$bucket
+    ]);
+    foreach ($results as $result) {
+        foreach ($result['Contents'] as $object) {
+            echo $object['Key'].PHP_EOL;
+            $bd = $object['Key'].PHP_EOL;
+            $filebd = file_get_contents($bd);
+        }
+    }
+} catch (S3Exception $e) {
+    echo $e->getMessage().PHP_EOL;
+}
+//Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
 // try {
-//     $results = $s3->getPaginator('ListObjects', [
-//         'Bucket'=>$bucket
+//     $objects = $s3->listObjects([
+      
+//        'Bucket'=>$bucket
+       
 //     ]);
-//     foreach ($results as $result) {
-//         foreach ($result['Contents'] as $object) {
-//             echo $object['Key'].PHP_EOL;
-//             $bd = $object['Key'].PHP_EOL;
-//             $filebd = file_get_contents($bd);
-//             echo 'contenu de fichier : '$filebd;
-//         }
+//     foreach ($objects['Contents']  as $object) {
+       
+//         echo $object['Key'].PHP_EOL;
+   
 //     }
 // } catch (S3Exception $e) {
 //     echo $e->getMessage().PHP_EOL;
 // }
-//Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
- try {
-    $objects = $s3->listObjects([
-      
-      'Bucket'=>$bucket
-       
-    ]);
-   foreach ($objects['Contents']  as $object) {
-            echo $object['key'].PHP_EOL;
-            return $object['key'];
-   }
- } 
-
-
-
-catch (S3Exception $e) {
-    echo $e->getMessage().PHP_EOL;
- }
-
-
-
+// echo  $object['Key'];
 ?>

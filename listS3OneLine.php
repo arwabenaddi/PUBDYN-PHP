@@ -59,7 +59,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     ]);
    foreach ($objects['Contents']  as $object) {
        
-        $object['Key'].PHP_EOL;
+        echo $object['Key'].PHP_EOL;
          
    
    }

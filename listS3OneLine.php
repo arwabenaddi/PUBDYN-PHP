@@ -62,15 +62,17 @@ try {
        echo $object['key'].PHP_EOL;       
        $name = $object['key'] ; 
    }
-    // Get the object.
-    $result = $s3->getObject([
-        'Bucket' => $bucket,
-        'Key'    => $name 
-    ]);
+ 
+  echo '<br><br><br>'.$name;
+   //     // Get the object.
+//     $result = $s3->getObject([
+//         'Bucket' => $bucket,
+//         'Key'    => $name 
+//     ]);
 
     // Display the object in the browser.
 //     header("Content-Type: {$result['ContentType']}");
-    echo $result['Body'];
+//     echo $result['Body'];
 }
 catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

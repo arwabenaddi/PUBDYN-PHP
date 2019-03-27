@@ -14,6 +14,9 @@ $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
 if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }
+else{
+    echo 'ok connect to mysql';
+}
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
@@ -31,7 +34,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         ],
         'endpoint'=>"https://".$CELLAR_ADDON_HOST
       ]);
-// Use the high-level iterators (returns ALL of your objects).
+
+//Utilisez les itérateurs de haut niveau (renvoie TOUS vos objets)
+//Use the high-level iterators (returns ALL of your objects).
 try {
     $results = $s3->getPaginator('ListObjects', [
         'Bucket'=>$bucket
@@ -39,58 +44,36 @@ try {
     foreach ($results as $result) {
         foreach ($result['Contents'] as $object) {
             echo $object['Key'].PHP_EOL;
+            $bd = $object['Key'].PHP_EOL;
+            $filebd = file_get_contents($bd);
+            echo 'contenu de fichier : '$filebd;
         }
     }
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
 }
-// Use the plain API (returns ONLY up to 1000 of your objects).
-try {
-    $objects = $s3->listObjects([
+//Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
+// try {
+//     $objects = $s3->listObjects([
       
-       'Bucket'=>$bucket
+//        'Bucket'=>$bucket
        
-    ]);
-    foreach ($objects['Contents']  as $object) {
+//     ]);
+//     foreach ($objects['Contents']  as $object) {
        
-        echo $object['Key'].PHP_EOL;
-        $bd = $object['Key'].PHP_EOL;
-        $filebd = file_get_contents($bd);
-        echo $filebd;
-       /////////////////////////////////////////////////////////////////
-// Temporary variable, used to store current query
-$templine = '';
-// Read in entire file
-$filename =  $object['Key'].PHP_EOL;
-// $lines = str_replace(CHR(13).CHR(10),"",$contentssss);
- $lines = file($filename);
-// Loop through each line
-foreach ($lines as $line)
-{
-// Skip it if it's a comment
-// || $line == str_replace(CHR(13).CHR(10),"",$line) 
-if (substr($line,0,2) == '--' || $line == '' )
-    continue;
-// Add this line to the current segment
-$templine = $line;
-// If it has a semicolon at the end, it's the end of the query
-if (substr(trim($line), -1, 1) == ';')
-{
-    // $line = str_replace(CHR(13).CHR(10),"",$line);
-    // Perform the query
-    // $insertfile = "INSERT INTO db VALUES ($templine)";
-    mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-    // Reset temp variable to empty
-    $templine = '';
-  echo "Tables imported successfully";
-}
-}
-//////////////////
-    }
-} catch (S3Exception $e) {
-    echo $e->getMessage().PHP_EOL;
-}
-echo  $object['Key'];
+//         echo $object['Key'].PHP_EOL;
+
+   
+//     }
+// } catch (S3Exception $e) {
+//     echo $e->getMessage().PHP_EOL;
+// }
+// echo  $object['Key'];
+
+
+
+
+
 
 
 ?>

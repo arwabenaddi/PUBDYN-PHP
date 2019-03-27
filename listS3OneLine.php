@@ -54,39 +54,22 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // }
 
 //Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
-//  try {
-//     $objects = $s3->listObjects([
+ try {
+    $objects = $s3->listObjects([
       
-//       'Bucket'=>$bucket
+      'Bucket'=>$bucket
        
-//     ]);
-//    foreach ($objects['Contents']  as $object) {
+    ]);
+   foreach ($objects['Contents']  as $object) {
        
-//        echo $object['Key'].PHP_EOL;
+       echo $object['Name'].PHP_EOL;
          
    
-//    }
-//  } catch (S3Exception $e) {
-//     echo $e->getMessage().PHP_EOL;
-//  }
+   }
+ } catch (S3Exception $e) {
+    echo $e->getMessage().PHP_EOL;
+ }
 
-
-
-    $buckets = $s3->listObjects();
-    //echo var_dump($buckets);
-    //Echo "\n---\n";
-    echo "at date ".date("Y-m-d H:i:s")." - Buckets are : ";
-
-    foreach ($buckets['Contents'] as $bucket) {
-        echo $bucket['Name'].",";
-    }
-    echo "END";
-
-}
-    catch(Exception $e) {
-
-    exit($e->getMessage());
-} 
 
 
 

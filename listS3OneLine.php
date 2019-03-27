@@ -63,15 +63,15 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
    foreach ($objects['Contents']  as $object) {
        
         echo $object['Key'].PHP_EOL;
-        $contents = readfile($object['Key'].PHP_EOL); 
+        
    
    }
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }
 
-        echo $object['Key'];
-        echo $object['Key'].PHP_EOL;
+
+   $contents = readfile($object['Key']); 
 
 
 

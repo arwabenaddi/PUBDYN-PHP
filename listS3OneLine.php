@@ -64,7 +64,7 @@ try {
 
     // Get the object.
     $result = $s3->getObject([
-        'Bucket' => $bucket,
+        'Bucket' => $bucket
 //         'Key'    => $CELLAR_ADDON_KEY_ID
     ]);
 

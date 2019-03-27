@@ -71,9 +71,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
  }
 
 
-   $contents = readfile($object['Key']); 
+   $contents = $object['Key']; 
 
-
+   $extension = pathinfo($contents->getFilename(), PATHINFO_EXTENSION);
 
 
 

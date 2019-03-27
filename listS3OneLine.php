@@ -17,7 +17,6 @@ else{
     echo 'ok connect to mysql';
 }
 //connect to S3
-$key = 'buwd3fyvnjp7yxrdicdgtest.sql'
 $bucket = 'new-bucket-10ed2760';
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
 $CELLAR_ADDON_KEY_ID = 'SW016A92CMAJ79EUZY77';
@@ -59,19 +58,24 @@ try {
 //     ]);
 //     foreach ($objects['Contents']  as $object) {
        
-//         echo $object['value'].PHP_EOL;
+//         echo $object['key'].PHP_EOL;
         
 //     }
 
     // Get the object.
-    $result = $s3->getObject([
-        'Bucket' => $bucket,
-        'Key'    => $key
+    $results = $s3->getObject([
+        'Bucket' => $bucket
     ]);
-
+    $results3 = '';
+    foreach ($results['Contents']  as $result ) {
+       
+        echo $result['key'].PHP_EOL;
+        $results3 = $result['key']
+        return $results3 ;
+    }
     // Display the object in the browser.
-    header("Content-Type: {$result['ContentType']}");
-    echo $result['Body'];
+    header("Content-Type: {$results3['ContentType']}");
+    echo $results3['Body'];
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
 }

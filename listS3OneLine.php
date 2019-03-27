@@ -67,6 +67,7 @@ try {
         'Bucket' => $bucket,
          'key' => 'buwd3fyvnjp7yxrdicdgtest.sql'
     ]);
+ console.log($results);
     // Display the object in the browser.
     header("Content-Type: {$results3['ContentType']}");
     echo $results3['Body'];

@@ -64,7 +64,7 @@ try {
     // Get the object.
     $result = $s3->getObject([
         'Bucket' => $bucket,
-        'Key'    => $keyname
+        'Key'    => $object['key']
     ]);
 
     // Display the object in the browser.

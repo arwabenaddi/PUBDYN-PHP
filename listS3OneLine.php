@@ -17,6 +17,7 @@ else{
     echo 'ok connect to mysql';
 }
 //connect to S3
+$key = 'buwd3fyvnjp7yxrdicdgtest.sql'
 $bucket = 'new-bucket-10ed2760';
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
 $CELLAR_ADDON_KEY_ID = 'SW016A92CMAJ79EUZY77';
@@ -64,8 +65,8 @@ try {
 
     // Get the object.
     $result = $s3->getObject([
-        'Bucket' => $bucket
-//         'Key'    => $CELLAR_ADDON_KEY_ID
+        'Bucket' => $bucket,
+        'Key'    => $key
     ]);
 
     // Display the object in the browser.

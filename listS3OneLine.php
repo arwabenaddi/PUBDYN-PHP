@@ -54,16 +54,16 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // $keyname = 'buwd3fyvnjp7yxrdicdgtest.sql';
 
 try {
- $name = '';
+//  $name = '';
  $keyname = $s3->listObjects([
             'Bucket'=>$bucket       
     ]);
    foreach ($keyname['Contents']  as $object) {       
        echo $object['key'].PHP_EOL;       
-       $name = $object['key'] ; 
+//        $name = $object['key'] ; 
    }
  
-  echo '<br><br><br>'.$name;
+//   echo '<br><br><br>'.$name;
    //     // Get the object.
 //     $result = $s3->getObject([
 //         'Bucket' => $bucket,

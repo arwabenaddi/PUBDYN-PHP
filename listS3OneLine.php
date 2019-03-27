@@ -52,7 +52,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
 
 // $keyname = 'buwd3fyvnjp7yxrdicdgtest.sql';
-
+echo 'bbbbbbb';
 try {
      $objects = $s3->listObjects([
       
@@ -65,6 +65,7 @@ try {
          
    
    }
+ echo 'vvvvvvvvvvv';
 // //  $name = '';
 //  $keyname = $s3->listObjects([
 //             'Bucket'=>$bucket       

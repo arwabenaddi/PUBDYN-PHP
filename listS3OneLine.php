@@ -62,7 +62,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
    foreach ($objects['Contents']  as $object) {
        
         echo $object['Key'].PHP_EOL;
-        $name =  $object['Key'].PHP_EOL;
+        $name =  $object['Key'];
            
    }
   
@@ -70,7 +70,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         // Get the object.
     $result = $s3->getObject([
         'Bucket' => $bucket,
-        'Key'    => $name 
+        'Key'    => $name
     ]);
 //     Display the object in the browser.
 //     header("Content-Type: {$result['ContentType']}");

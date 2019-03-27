@@ -58,8 +58,12 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        
     ]);
    foreach ($objects['Contents']  as $object) {
-       
+        echo 'nom de fichier <br>';
+    
         echo $object['key'].PHP_EOL;
+    
+    if (isset($object)) {
+
         // Temporary variable, used to store current query
         $templine = '';
         // Read in entire file
@@ -94,7 +98,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             echo 'Tables imported successfully';
         }
         }
-           
+       }    
    }
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

@@ -49,20 +49,29 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // } catch (S3Exception $e) {
 //     echo $e->getMessage().PHP_EOL;
 // }
-Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
+// Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
 try {
-    $objects = $s3->listObjects([
+//     $objects = $s3->listObjects([
       
-       'Bucket'=>$bucket
+//        'Bucket'=>$bucket
        
-    ]);
-    foreach ($objects['Contents']  as $object) {
+//     ]);
+//     foreach ($objects['Contents']  as $object) {
        
-        echo $object['value'].PHP_EOL;
+//         echo $object['value'].PHP_EOL;
         
-    }
-} catch (S3Exception $e) {
+//     }
+
+    // Get the object.
+    $result = $s3->getObject([
+        'Bucket' => $bucket,
+        'Key'    => $CELLAR_ADDON_KEY_ID
+    ]);
+
+    // Display the object in the browser.
+    header("Content-Type: {$result['ContentType']}");
+    echo $result['Body'];
+ } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
 }
-
 ?>

@@ -58,7 +58,7 @@ try {
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
-$filename =  $object['Key'].PHP_EOL;;
+$filename =  $object['Key'].PHP_EOL;
 // $lines = str_replace(CHR(13).CHR(10),"",$contentssss);
  $lines = file($filename);
 // Loop through each line

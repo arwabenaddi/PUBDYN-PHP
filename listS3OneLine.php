@@ -80,7 +80,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
      // Temporary variable, used to store current query
    $templine = '';
    // Read in entire file
-   $filename =  $name;
+   $filename =  $result;
    //  echo $contents;
    //  $contents = str_replace(' ','',$contents);
    // $lines = str_replace(CHR(13).CHR(10),"",$contents);

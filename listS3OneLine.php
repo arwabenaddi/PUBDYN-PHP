@@ -88,13 +88,15 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 // Insertion fichier dans la BD
 // Temporary variable, used to store current query
-
+      $contents = $result['Body'];
         // // Read in entire file
         // $filename = $name;
         // $lines = file($filename);
         // //  echo $contents;
-        // //  $contents = str_replace(' ','',$contents);
-        // // $lines = str_replace(CHR(13).CHR(10),"",$contents);
+//      $contents = str_replace('','',$contents);
+      $lines = str_replace("arwa","test",$contents);
+      
+      echo $contents;
         // //     $lines = $filename;
         // // Loop through each line
         // $templine = "";
@@ -128,56 +130,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
  catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }
- finally {
-    $objects = $s3->listObjects([
-      
-      'Bucket'=>$bucket
-       
-    ]);
-   foreach ($objects['Contents']  as $object) {
-       
-        echo $object['Key'].PHP_EOL;
-        $name =  $object['Key'];
-   }
-        $resultm = $s3->getObject([
-        'Bucket' => $bucket,
-        'Key'    => $name
-    ]);
-         // Temporary variable, used to store current query
-$templine = '';
-// Read in entire file
- $filename = $resultm['Body'];
 
-//  echo $contents;
-//  $contents = str_replace(' ','',$contents);
-
-// $lines = str_replace(CHR(13).CHR(10),"",$contents);
-  
- $lines = file($filename);
-// Loop through each line
-foreach ( $lines as $line){
-   echo 'ok foreach';
-// Skip it if it's a comment
-// || $line == str_replace(CHR(13).CHR(10),"",$line) 
-if (substr($line,0,2) == '--' || $line == '' )
-    continue;
-
-// Add this line to the current segment
-$templine = $line;
-
-// If it has a semicolon at the end, it's the end of the query
-if (substr(trim($line),-1,1) == ';')
-{
-    // $line = str_replace(CHR(13).CHR(10),"",$line);
-    // Perform the query
-    // $insertfile = "INSERT INTO db VALUES ($templine)";
-    mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-    // Reset temp variable to empty
-    $templine = '';
-}
-}
- echo "Tables imported successfully";  
-
- }
 ?>
 

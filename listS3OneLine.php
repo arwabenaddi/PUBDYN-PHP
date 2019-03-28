@@ -68,19 +68,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        $content = str_replace("arwa","test",$contents);      
        echo $content;
         // // Loop through each line
-        $templine = "";
-        echo 'cccccccccccccccccccccc';
-        if (substr($content,0,2) == '--' || $content == '' )
-            continue;
-        // Add this line to the current segment
-        $templine = $content;
-        // If it has a semicolon at the end, it's the end of the query
-        if (substr(trim($line), -1, 1) == ';')
-            {
-                echo 'insert to database';
-                mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-                $templine = "";
-                 }
+      
  } 
  catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

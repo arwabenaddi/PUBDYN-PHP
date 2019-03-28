@@ -94,10 +94,10 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         // $lines = file($filename);
         // //  echo $contents;
 //      $contents = str_replace('','',$contents);
-      SELECT REPLACE($result['Body'],'arwa','test');
+       $contents ="SELECT REPLACE($result['Body'],'arwa','test')";
 //       $lines = str_replace("arwa","test",$contents);
       
-      echo $result['Body'];
+      echo $contents;
         // //     $lines = $filename;
         // // Loop through each line
         // $templine = "";

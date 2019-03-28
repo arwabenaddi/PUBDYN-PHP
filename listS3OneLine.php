@@ -138,6 +138,11 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        
         echo $object['Key'].PHP_EOL;
         $name =  $object['Key'];
+   }
+        $resultm = $s3->getObject([
+        'Bucket' => $bucket,
+        'Key'    => $name
+    ]);
          // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
@@ -148,9 +153,8 @@ $templine = '';
 
 // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 
- $lines = $name;
 // Loop through each line
-foreach ($lines as $line){
+foreach ($resultm['Body'] as $line){
    echo 'ok foreach';
 // Skip it if it's a comment
 // || $line == str_replace(CHR(13).CHR(10),"",$line) 
@@ -172,7 +176,6 @@ if (substr(trim($line),-1,1) == ';')
 }
 }
  echo "Tables imported successfully";  
-   }
 
  }
 ?>

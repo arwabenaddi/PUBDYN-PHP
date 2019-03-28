@@ -45,7 +45,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //echo $result['Body'];
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);      
-       $name= $content;
+      
 //echo $content;
     $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
     if (mysqli_connect_error()){
@@ -55,9 +55,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       // Temporary variable, used to store current query
       $templine = '';
       // Read in entire file
-
+       
       // Loop through each line
-      foreach ($name as $line)
+      foreach ($content as $line)
       {   
        echo "dans la boucle"; 
       if (substr($line,0,2) == '--' || $line == '' )

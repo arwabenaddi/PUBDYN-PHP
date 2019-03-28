@@ -55,9 +55,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
-$lines = file('https://new-bucket-10ed2760.cellar-c2.services.clever-cloud.com/buwd3fyvnjp7yxrdicdgtest.sql');
+
 // Loop through each line
-foreach ($lines as $line)
+foreach ($name as $line)
 {   
  echo "dans la boucle"; 
 if (substr($line,0,2) == '--' || $line == '' )

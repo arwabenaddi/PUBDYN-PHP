@@ -72,10 +72,10 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // }
 //  echo "Tables imported successfully"; 
 //    } 
-      $names=file($name);
+      $namesS=file($name);
       // To check the number of lines 
-      echo count($names).'<br>';
-      foreach($names as $name)
+      echo count($namesS).'<br>';
+      foreach($namesS as $name)
       {
          echo $name.'<br>';
       }

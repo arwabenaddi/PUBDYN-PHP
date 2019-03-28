@@ -102,9 +102,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         // // Loop through each line
         $templine = "";
 
-       
+        $lines = file($content);
         
-        foreach ($content as $line)
+        foreach ( $lines as $line)
         {
                     echo 'cccccccccccccccccccccc';
                 // Skip it if it's a comment

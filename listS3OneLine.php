@@ -41,20 +41,22 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         'Key'    => $name
     ]);
 
-//   Affichage contenu de fichier existant dans le bucket 
-//      echo $result['Body'];
+//Affichage contenu de fichier existant dans le bucket 
+//echo $result['Body'];
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);      
-//        echo $content;
+//echo $content;
     $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
     if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
     else{
+       $templine = '';
         echo 'ok connect to mysql';
-        
-        mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
-         
+        foreach ($content as $line){
+            echo $line;
+//             mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
+        }       
     }
  } 
  catch (S3Exception $e) {

@@ -5,7 +5,18 @@ $racine=substr($argv[0],0,strpos($argv[0], "list"));
 require_once $racine.'aws-autoloader.php';
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
-
+// connect to MySql 
+$host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clever Cloud
+$dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
+$dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
+$dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
+ $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
+if (mysqli_connect_error()){
+    die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
+}
+else{
+    echo 'ok connect to mysql';
+}
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
@@ -73,7 +84,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 
 //   Affichage contenu de fichier existant dans le bucket 
-    // echo $result['Body'];
+     echo $result['Body'];
 
 // Insertion fichier dans la BD
 // Temporary variable, used to store current query
@@ -118,18 +129,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     echo $e->getMessage().PHP_EOL;
  }
  finally {
-// connect to MySql 
-$host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clever Cloud
-$dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
-$dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
-$dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
- $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
-if (mysqli_connect_error()){
-    die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-}
-else{
-    echo 'ok connect to mysql';
-}
+
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
@@ -140,7 +140,7 @@ $templine = '';
 
 // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 
- $lines = 'buwd3fyvnjp7yxrdicdgtest.sql';
+ $lines = $result['Body'];
 // Loop through each line
 foreach ($lines as $line)
 {

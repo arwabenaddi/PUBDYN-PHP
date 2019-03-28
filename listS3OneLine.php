@@ -82,10 +82,11 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              {
                  mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
                  // Reset temp variable to empty
+                 echo "Tables imported successfully";
                  $templine = '';
              }
          }
-          echo "Tables imported successfully";
+          
              }
  } 
  catch (S3Exception $e) {

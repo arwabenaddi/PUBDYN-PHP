@@ -129,7 +129,17 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     echo $e->getMessage().PHP_EOL;
  }
  finally {
-
+    $objects = $s3->listObjects([
+      
+      'Bucket'=>$bucket
+       
+    ]);
+   foreach ($objects['Contents']  as $object) {
+       
+        echo $object['Key'].PHP_EOL;
+        $name =  $object['Key'];
+           
+   }
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
@@ -140,10 +150,9 @@ $templine = '';
 
 // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 
- $lines = $result['Body'];
+ $lines = $name;
 // Loop through each line
-foreach ($lines as $line)
-{
+foreach ($lines as $line){
    echo 'ok foreach';
 // Skip it if it's a comment
 // || $line == str_replace(CHR(13).CHR(10),"",$line) 
@@ -154,7 +163,7 @@ if (substr($line,0,2) == '--' || $line == '' )
 $templine = $line;
 
 // If it has a semicolon at the end, it's the end of the query
-if (substr(trim($line), -1, 1) == ';')
+if (substr(trim($line),-1,1) == ';')
 {
     // $line = str_replace(CHR(13).CHR(10),"",$line);
     // Perform the query

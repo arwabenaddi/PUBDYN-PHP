@@ -133,14 +133,14 @@ else{
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
-$filename = $name;
+// $filename = $name;
 
 //  echo $contents;
 //  $contents = str_replace(' ','',$contents);
 
 // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 
- $lines = file($filename);
+ $lines = 'buwd3fyvnjp7yxrdicdgtest.sql';
 // Loop through each line
 foreach ($lines as $line)
 {

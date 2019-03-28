@@ -80,6 +80,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //     $resultbd = $result['Body'];
   
 //     echo $result['Body'];
+  
+   try {
      // Temporary variable, used to store current query
    
    // Read in entire file
@@ -112,7 +114,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
    }
    }
   
-  
+   }
   
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

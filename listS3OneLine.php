@@ -56,13 +56,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 //   Affichage contenu de fichier existant dans le bucket 
 //      echo $result['Body'];
-
-// Insertion fichier dans la BD
-// Temporary variable, used to store current query
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);      
-       echo $content;
-        // // Loop through each line
+//        echo $content;
     $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
     if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
@@ -70,13 +66,12 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     else{
         echo 'ok connect to mysql';
         $templine = '';
-         // Read in entire file
-
-         // Loop through each line
+        echo $content;
          foreach ($content as $line)
-         {
+         {   
+             echo $line;
              if (substr($line,0,2) == '--' || $line == '' )
-                 continue;
+              continue;
              // Add this line to the current segment
              $templine = $line;
              if (substr(trim($line), -1, 1) == ';')
@@ -87,8 +82,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
                  $templine = '';
              }
          }
-          
-             }
+       }
  } 
  catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

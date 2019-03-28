@@ -53,6 +53,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
 
     $name = "";
+    $resultbd = "";
  try {
     $objects = $s3->listObjects([
       
@@ -75,13 +76,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //     Display the object in the browser.
 //     header("Content-Type: {$result['ContentType']}");
 //     echo $result['Body'];
-    echo $result;
-  
+    echo $result['Key'];
+    $resultbd = $result['Key'];
     
      // Temporary variable, used to store current query
-   $templine = '';
+   $templine = "";
    // Read in entire file
-   $filename =  $result;
+   $filename = $resultbd 
    //  echo $contents;
    //  $contents = str_replace(' ','',$contents);
    // $lines = str_replace(CHR(13).CHR(10),"",$contents);
@@ -103,7 +104,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        // $insertfile = "INSERT INTO db VALUES ($templine)";
        mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
        // Reset temp variable to empty
-       $templine = '';
+       $templine = "";
    }
    }
   

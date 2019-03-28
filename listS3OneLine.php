@@ -68,7 +68,25 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     }
     else{
         echo 'ok connect to mysql';
-    }
+        $templine = '';
+         // Read in entire file
+
+         // Loop through each line
+         foreach ($content as $line)
+         {
+             if (substr($line,0,2) == '--' || $line == '' )
+                 continue;
+             // Add this line to the current segment
+             $templine = $line;
+             if (substr(trim($line), -1, 1) == ';')
+             {
+                 mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+                 // Reset temp variable to empty
+                 $templine = '';
+             }
+         }
+          echo "Tables imported successfully";
+             }
  } 
  catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

@@ -80,7 +80,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //     echo $result['Body'];
 //     $resultbd = $result['Body'];
   
-    echo $result['Body'];
+//     echo $result['Body'];
      // Temporary variable, used to store current query
    
    // Read in entire file
@@ -92,6 +92,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
    // Loop through each line
    foreach ($lines as $line)
    {
+    echo $lines;
    // Skip it if it's a comment
    // || $line == str_replace(CHR(13).CHR(10),"",$line) 
    if (substr($line,0,2) == '--' || $line == '' )
@@ -104,6 +105,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        // $line = str_replace(CHR(13).CHR(10),"",$line);
        // Perform the query
        // $insertfile = "INSERT INTO db VALUES ($templine)";
+       echo 'insert to database';
        mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
        // Reset temp variable to empty
        $templine = "";

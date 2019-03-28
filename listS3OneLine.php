@@ -51,19 +51,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
     else{
-
-
-//Insertion de données 
-
-   if($connection<>0){ 
-       $requete= $content; 
-       $resultat=@mysql_query($requete,$connection); 
+       mysqli_query($connection,$object['Key']) or die('Erreur insertion file'.$object['Key'].'<br>'.mysqli_error($connection));
        else 
        { 
            echo "Echec de l'enregistrement, désolé"; 
        }  
-         } 
-    }
+   } 
+   
 } 
  catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

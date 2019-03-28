@@ -88,16 +88,16 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 // Insertion fichier dans la BD
 // Temporary variable, used to store current query
-      $contents = $result['Body'];
+//       $contents = $result['Body'];
         // // Read in entire file
         // $filename = $name;
         // $lines = file($filename);
         // //  echo $contents;
 //      $contents = str_replace('','',$contents);
-      SELECT REPLACE($contents, 'arwa', 'test');
+      SELECT REPLACE($result['Body'],'arwa','test');
 //       $lines = str_replace("arwa","test",$contents);
       
-      echo $contents;
+      echo $result['Body'];
         // //     $lines = $filename;
         // // Loop through each line
         // $templine = "";

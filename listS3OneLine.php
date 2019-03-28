@@ -80,11 +80,11 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //     echo $result['Body'];
 //     $resultbd = $result['Body'];
   
-    echo $name;
+    echo $result;
      // Temporary variable, used to store current query
    
    // Read in entire file
-   $filename = $result['Body'];
+   $filename = $result;
    //  echo $contents;
    //  $contents = str_replace(' ','',$contents);
    // $lines = str_replace(CHR(13).CHR(10),"",$contents);

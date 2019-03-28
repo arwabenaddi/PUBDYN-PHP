@@ -51,9 +51,25 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
     else{
-        echo 'ok connect to mysql';
-       mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
-           
+echo 'ok connect to mysql';
+$templine = '';
+// Read in entire file
+$filename = 'https://new-bucket-10ed2760.cellar-c2.services.clever-cloud.com/buwd3fyvnjp7yxrdicdgtest.sql';
+$lines = file($filename);
+// Loop through each line
+foreach ($lines as $line)
+{
+    if (substr($line,0,2) == '--' || $line == '' )
+        continue;
+    // Add this line to the current segment
+    $templine = $line;
+    if (substr(trim($line), -1, 1) == ';')
+    {
+        mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+        // Reset temp variable to empty
+        $templine = '';
+    }
+} 
     }
  } 
  catch (S3Exception $e) {

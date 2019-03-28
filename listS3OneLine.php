@@ -54,7 +54,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
     $name = "";
     $resultbd = "";
-    $templine = "";
  try {
     $objects = $s3->listObjects([
       
@@ -84,15 +83,16 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
      // Temporary variable, used to store current query
    
    // Read in entire file
-   $lines = $result['Body'];
+   $lines = $name;
    //  echo $contents;
    //  $contents = str_replace(' ','',$contents);
    // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 //     $lines = $filename;
    // Loop through each line
+   $templine = "";
    foreach ($lines as $line)
    {
-    echo $lines;
+    echo 'cccccccccccccccccccccc';
    // Skip it if it's a comment
    // || $line == str_replace(CHR(13).CHR(10),"",$line) 
    if (substr($line,0,2) == '--' || $line == '' )

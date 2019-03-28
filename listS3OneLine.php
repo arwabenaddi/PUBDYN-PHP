@@ -1,5 +1,4 @@
 
-
 <?php
 // Decode the argument of the batch
 $racine=substr($argv[0],0,strpos($argv[0], "list"));
@@ -58,7 +57,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     
  try {
 
-    try {
 
     $objects = $s3->listObjects([
       
@@ -86,11 +84,11 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 
 //   Affichage contenu de fichier existant dans le bucket 
-    echo $result['Body'];
-    }
+    // echo $result['Body'];
+
 // Insertion fichier dans la BD
 // Temporary variable, used to store current query
-    finally {
+
         // Read in entire file
         $filename = $name;
         $lines = file($filename);
@@ -100,28 +98,31 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         //     $lines = $filename;
         // Loop through each line
         $templine = "";
-        foreach ($lines as $line)
-        {
-                echo 'cccccccccccccccccccccc';
-            // Skip it if it's a comment
-            // || $line == str_replace(CHR(13).CHR(10),"",$line) 
-            if (substr($line,0,2) == '--' || $line == '' )
-                continue;
-            // Add this line to the current segment
-            $templine = $line;
-            // If it has a semicolon at the end, it's the end of the query
-            if (substr(trim($line), -1, 1) == ';')
+
+        if (!empty($lines)){
+            echo "function iffff";
+            foreach ($lines as $line)
             {
-                // $line = str_replace(CHR(13).CHR(10),"",$line);
-                // Perform the query
-                // $insertfile = "INSERT INTO db VALUES ($templine)";
-                echo 'insert to database';
-                mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-                // Reset temp variable to empty
-                $templine = "";
+                    echo 'cccccccccccccccccccccc';
+                // Skip it if it's a comment
+                // || $line == str_replace(CHR(13).CHR(10),"",$line) 
+                if (substr($line,0,2) == '--' || $line == '' )
+                    continue;
+                // Add this line to the current segment
+                $templine = $line;
+                // If it has a semicolon at the end, it's the end of the query
+                if (substr(trim($line), -1, 1) == ';')
+                {
+                    // $line = str_replace(CHR(13).CHR(10),"",$line);
+                    // Perform the query
+                    // $insertfile = "INSERT INTO db VALUES ($templine)";
+                    echo 'insert to database';
+                    mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+                    // Reset temp variable to empty
+                    $templine = "";
+                }
             }
         }
-    }
   
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

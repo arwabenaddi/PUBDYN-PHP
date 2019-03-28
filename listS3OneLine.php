@@ -84,7 +84,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 
 //   Affichage contenu de fichier existant dans le bucket 
-     echo $result['Body'];
+//      echo $result['Body'];
 
 // Insertion fichier dans la BD
 // Temporary variable, used to store current query
@@ -94,7 +94,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         // $lines = file($filename);
         // //  echo $contents;
 //      $contents = str_replace('','',$contents);
-      $lines = str_replace("arwa","test",$contents);
+      SELECT REPLACE($contents, 'arwa', 'test');
+//       $lines = str_replace("arwa","test",$contents);
       
       echo $contents;
         // //     $lines = $filename;

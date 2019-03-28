@@ -144,6 +144,7 @@ $filename = $name;
 // Loop through each line
 foreach ($lines as $line)
 {
+   echo 'ok foreach';
 // Skip it if it's a comment
 // || $line == str_replace(CHR(13).CHR(10),"",$line) 
 if (substr($line,0,2) == '--' || $line == '' )

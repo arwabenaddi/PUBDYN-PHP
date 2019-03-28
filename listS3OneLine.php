@@ -51,12 +51,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
     else{
-       $templine = '';
+        echo $content;
         echo 'ok connect to mysql';
-        foreach ($content as $line){
-            echo $line;
-//             mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
-        }       
+           
     }
  } 
  catch (S3Exception $e) {

@@ -74,9 +74,10 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     ]);
 //     Display the object in the browser.
 //     header("Content-Type: {$result['ContentType']}");
-    echo $result['Body'];
+//     echo $result['Body'];
+    echo $result;
   
-  
+    
      // Temporary variable, used to store current query
    $templine = '';
    // Read in entire file

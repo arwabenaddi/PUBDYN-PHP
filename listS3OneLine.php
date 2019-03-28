@@ -66,7 +66,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     else{
         echo 'ok connect to mysql';
         $templine = '';
-        echo $content;
+        
          foreach ($content as $line)
          {   
              echo $line;

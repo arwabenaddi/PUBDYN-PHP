@@ -34,24 +34,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         ],
         'endpoint'=>"https://".$CELLAR_ADDON_HOST
       ]);
-//Utilisez les itérateurs de haut niveau (renvoie TOUS vos objets)
-//Use the high-level iterators (returns ALL of your objects).
-// try {
-//     $results = $s3->getPaginator('ListObjects', [
-//         'Bucket'=>$bucket
-//     ]);
-//     foreach ($results as $result) {
-//         foreach ($result['Contents'] as $object) {
-//             echo $object['Key'].PHP_EOL;
-//             $bd = $object['Key'].PHP_EOL;
-//             $filebd = file_get_contents($bd);
-//             echo 'contenu de fichier : '$filebd;
-//         }
-//     }
-// } catch (S3Exception $e) {
-//     echo $e->getMessage().PHP_EOL;
-// }
-//Utilisez l'API simple (renvoie SEULEMENT jusqu'à 1000 de vos objets)
 
     $name = "";
     
@@ -76,12 +58,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         'Bucket' => $bucket,
         'Key'    => $name
     ]);
-//     Display the object in the browser.
-//     header("Content-Type: {$result['ContentType']}");
-//     echo $result['Body'];
-//     echo $result['Body'];
-//     $resultbd = $result['Body'];
-
 
 //   Affichage contenu de fichier existant dans le bucket 
 //      echo $result['Body'];
@@ -89,45 +65,22 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // Insertion fichier dans la BD
 // Temporary variable, used to store current query
        $contents = $result['Body'];
-        // // Read in entire file
-        // $filename = $name;
-        // $lines = file($filename);
-        // //  echo $contents;
-//      $contents = str_replace('','',$contents);
-       $content = str_replace("arwa","test",$contents);
-//       $lines = str_replace("arwa","test",$contents);
-      
+       $content = str_replace("arwa","test",$contents);      
        echo $content;
-        
         // // Loop through each line
         $templine = "";
-
-
-                    echo '<br>cccccccccccccccccccccc';
-                    echo '<br>cccccccccccccccccccccc';
-                    echo '<br>cccccccccccccccccccccc';
-                    echo '<br>cccccccccccccccccccccc';
-                    echo '<br>cccccccccccccccccccccc';
-                // Skip it if it's a comment
-        //         // || $line == str_replace(CHR(13).CHR(10),"",$line) 
-                if (substr($content,0,2) == '--' || $content == '' )
-                     continue;
-        //         // Add this line to the current segment
-               $templine = $content;
-        //         // If it has a semicolon at the end, it's the end of the query
-               if (substr(trim($line), -1, 1) == ';')
-                 {
-                    // $line = str_replace(CHR(13).CHR(10),"",$line);
-        //             // Perform the query
-        //             // $insertfile = "INSERT INTO db VALUES ($templine)";
-                   echo 'insert to database';
-                    mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-        //             // Reset temp variable to empty
-                   $templine = "";
+        echo 'cccccccccccccccccccccc';
+        if (substr($content,0,2) == '--' || $content == '' )
+            continue;
+        // Add this line to the current segment
+        $templine = $content;
+        // If it has a semicolon at the end, it's the end of the query
+        if (substr(trim($line), -1, 1) == ';')
+            {
+                echo 'insert to database';
+                mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+                $templine = "";
                  }
-           
-        
-  
  } 
  catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

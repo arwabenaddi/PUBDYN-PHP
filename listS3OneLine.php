@@ -1,4 +1,3 @@
-
 <?php
 // Decode the argument of the batch
 $racine=substr($argv[0],0,strpos($argv[0], "list"));
@@ -10,8 +9,6 @@ $host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clev
 $dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
 $dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
 $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
- 
-
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
@@ -29,25 +26,15 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         ],
         'endpoint'=>"https://".$CELLAR_ADDON_HOST
       ]);
-
-    $name = "";
-    
+  $name = "";    
  try {
-
-
-    $objects = $s3->listObjects([
-      
-      'Bucket'=>$bucket
-       
+    $objects = $s3->listObjects([      
+      'Bucket'=>$bucket       
     ]);
-   foreach ($objects['Contents']  as $object) {
-       
+   foreach ($objects['Contents']  as $object) {       
         echo $object['Key'].PHP_EOL;
-        $name =  $object['Key'];
-           
-   }
-  
-  
+        $name =  $object['Key'];           
+   }  
     // Get the object.
     $result = $s3->getObject([
         'Bucket' => $bucket,
@@ -65,23 +52,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     }
     else{
         echo 'ok connect to mysql';
-        $templine = '';
-        
-         foreach ($content as $line)
-         {   
-             echo $line;
-             if (substr($line,0,2) == '--' || $line == '' )
-              continue;
-             // Add this line to the current segment
-             $templine = $line;
-             if (substr(trim($line), -1, 1) == ';')
-             {
-                 mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-                 // Reset temp variable to empty
-                 echo "Tables imported successfully";
-                 $templine = '';
-             }
-         }
+        mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
        }
  } 
  catch (S3Exception $e) {

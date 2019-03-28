@@ -52,9 +52,12 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     }
     else{
         echo 'ok connect to mysql';
-        if ((substr(trim($content), -1, 1) == ';') & (substr($content,0,2) == '--' || $content == '' )){
+    if (substr($content,0,2) == '--' || $content == '' )
+         continue;
+       if (substr(trim($content), -1, 1) == ';')
+     {
         mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
-       }
+     }
     }
  } 
  catch (S3Exception $e) {

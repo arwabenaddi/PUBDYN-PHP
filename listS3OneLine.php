@@ -10,7 +10,7 @@ $host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clev
 $dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
 $dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
 $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
- $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
+ 
 
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
@@ -63,6 +63,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        $content = str_replace("arwa","test",$contents);      
        echo $content;
         // // Loop through each line
+    $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
     if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }

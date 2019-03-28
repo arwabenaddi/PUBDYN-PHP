@@ -138,9 +138,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        
         echo $object['Key'].PHP_EOL;
         $name =  $object['Key'];
-           
-   }
-// Temporary variable, used to store current query
+         // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
 // $filename = $name;
@@ -173,7 +171,9 @@ if (substr(trim($line),-1,1) == ';')
     $templine = '';
 }
 }
- echo "Tables imported successfully";
+ echo "Tables imported successfully";  
+   }
+
  }
 ?>
 

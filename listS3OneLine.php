@@ -53,7 +53,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     $fichier = $content;
       while (!feof($fichier)){
          $fichiers = fgetc($fichier);
-           if (substr($fichiers,0,2) == '--' || $fichiers == '' )continue;
+           if (substr($fichiers,0,2) == '--' || $fichiers == '' ){continue;}
             if (substr(trim($fichiers), -1, 1) == ';')
             {
            mysqli_query($connection,$fichiers) or die('Erreur insertion file'.$fichiers.'<br>'.mysqli_error($connection));

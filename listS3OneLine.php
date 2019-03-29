@@ -51,6 +51,8 @@ if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }
 else{
+   if (substr($content,0,2) == '--' || $content == '' )
+    continue;
     mysqli_query($connection,'`'+$content+'`') or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
 
 }

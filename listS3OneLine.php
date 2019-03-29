@@ -52,9 +52,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       //echo $result['Body'];
              $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);  
-             $content = str_replace("--.*?/s","", $content); 
+             $test = str_replace("#(--).*(\?>)#","", $content); 
   
-    echo $content;
+    echo $test;
 
         
 } catch (S3Exception $e) {

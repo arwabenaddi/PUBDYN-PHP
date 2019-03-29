@@ -59,7 +59,7 @@ else{
 
     $counter = 0;
     while (!feof($inputHandle)) {
-        if ($counter < $lineCountToRemove) {
+        if ($counter < length($inputHandle)) {
             ++$counter;
             continue;
         }

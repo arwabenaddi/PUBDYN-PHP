@@ -45,14 +45,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //echo $result['Body'];
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);  
-        $contents = file_put_contents($contents,$content);
 //echo $content;
     $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
     if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
       else{         
-          mysqli_query($connection,$contents) or die('Erreur insertion file'.$contents.'<br>'.mysqli_error($connection));
+          mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
       }   
 } 
  catch (S3Exception $e) {

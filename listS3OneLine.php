@@ -45,17 +45,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //echo $result['Body'];
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);  
-//echo $content;
-    $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
-    if (mysqli_connect_error()){
-        die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-    }
-           mysqli_query($connection,$fichiers) or die('Erreur insertion file'.$fichiers.'<br>'.mysqli_error($connection));
+        echo $content;
 
-// If it has a semicolon at the end, it's the end of the query
- 
-} 
- catch (S3Exception $e) {
+ } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }
 

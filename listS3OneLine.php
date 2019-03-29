@@ -9,6 +9,12 @@ $host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clev
 $dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
 $dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
 $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
+
+//connect to Mysql
+ $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
+if (mysqli_connect_error()){
+    die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
+}
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
 $bucketAr = 'archivage';
@@ -47,18 +53,43 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);  
 //         echo $content;
-    
-    if(!empty($content )){
-       $test = s3-> putObject ([
-        'Bucket' => $bucketAr,
-        'Key'    => $content
-       ]);
-       echo $test;
-    }
- $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
-if (mysqli_connect_error()){
-    die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-}
+      try {
+            // Temporary variable, used to store current query
+            $templine = '';
+            // Read in entire file
+            $filename = $content;
+            // $filenames = readfile('db.sql'); 
+            //  echo $contents;
+            //  $contents = str_replace(' ','',$contents);
+
+            // $lines = str_replace(CHR(13).CHR(10),"",$contents);
+          
+             $lines = file($filename);
+             echo $lines;
+            // Loop through each line
+//             foreach ($lines as $line)
+//             {
+//             // Skip it if it's a comment
+//             // || $line == str_replace(CHR(13).CHR(10),"",$line) 
+//             if (substr($line,0,2) == '--' || $line == '' )
+//                 continue;
+
+//             // Add this line to the current segment
+//             $templine = $line;
+
+//             // If it has a semicolon at the end, it's the end of the query
+//             if (substr(trim($line), -1, 1) == ';')
+//             {
+//                 // $line = str_replace(CHR(13).CHR(10),"",$line);
+//                 // Perform the query
+//                 // $insertfile = "INSERT INTO db VALUES ($templine)";
+//                 mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+//                 // Reset temp variable to empty
+//                 $templine = '';
+//             }
+//             }
+      }
+        
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }

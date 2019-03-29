@@ -61,9 +61,9 @@ $filename = $name;
 
 // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 echo $filename;
- $lines = file($filename);
+ $lines = $content;
 // Loop through each line
-mysqli_query($connection,$lines) or die('Erreur insertion file'.$lines.'<br>'.mysqli_error($connection));
+mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
 
 // If it has a semicolon at the end, it's the end of the query
 } 

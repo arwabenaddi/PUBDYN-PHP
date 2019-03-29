@@ -50,13 +50,10 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
-//  echo $contents;
-//  $contents = str_replace(' ','',$contents);
-
-// $lines = str_replace(CHR(13).CHR(10),"",$contents);
- $lines = $content;
-// Loop through each line
-mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
+    $fichier = $content;
+      while (!feof($fichier)){
+           mysqli_query($connection,$fichier) or die('Erreur insertion file'.$fichier.'<br>'.mysqli_error($connection));
+      }
 // If it has a semicolon at the end, it's the end of the query
  
 } 

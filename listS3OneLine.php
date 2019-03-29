@@ -50,18 +50,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }
-else{
-    $counter = 0;
-    while (!empty($content)){
-        if ($counter < length($content)) {
-            ++$counter;
-            continue;
-        }
-         mysqli_query($connection,'`'.$content.'`') or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
-        
-    }
-
-}
+ echo $name;
+ echo $result['Body'];
    
  
 

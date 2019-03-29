@@ -47,10 +47,14 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);  
 //         echo $content;
+    
+    if(!empty($content )){
        $test = s3-> putObject ([
         'Bucket' => $bucketAr,
         'Key'    => $content
-    ]);
+       ]);
+       echo $test;
+    }
  $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
 if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());

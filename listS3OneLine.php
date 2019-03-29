@@ -52,12 +52,12 @@ if (mysqli_connect_error()){
 }
 else{
     $counter = 0;
-    while (!feof($content)){
+    while (!empty($content)){
         if ($counter < length($content)) {
             ++$counter;
             continue;
         }
-         mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
+         mysqli_query($connection,'`'.$content.'`') or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
         
     }
 

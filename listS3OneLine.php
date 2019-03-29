@@ -12,9 +12,7 @@ $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
 
 //connect to Mysql
  $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
-if (mysqli_connect_error()){
-    die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-}
+
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
 $bucketAr = 'archivage';
@@ -51,12 +49,16 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       //Affichage contenu de fichier existant dans le bucket 
       //echo $result['Body'];
              $contents = $result['Body'];
-             $content = str_replace("arwa","test",$contents);  
-             $test = str_replace("#(--).*(\?>)#","", $content); 
+             $content = str_replace("arwa","test",$contents); 
              $tests = preg_replace("#(--).*(\n)#", "", $content);
- 
-  
-    echo $tests;
+//              echo $tests;
+  if (mysqli_connect_error()){
+    die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
+}
+  else{
+      mysqli_query($connection,$tests) or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
+  }
+
 
         
 } catch (S3Exception $e) {

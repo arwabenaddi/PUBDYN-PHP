@@ -51,7 +51,25 @@ if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }
 else{
-    mysqli_query($connection,'`'.$content.'`') or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
+     $inputHandle = fopen($content, 'r');
+    $outputHandle = fopen($content, 'w');
+
+    // make sure you handle errors as well
+    // files may be unreadable, unwritable etc…
+
+    $counter = 0;
+    while (!feof($inputHandle)) {
+        if ($counter < $lineCountToRemove) {
+            ++$counter;
+            continue;
+        }
+         mysqli_query($connection,$outputHandle) or die('Erreur insertion file'.$outputHandle.'<br>'.mysqli_error($connection));
+        fwrite($outputHandle, fgets($inputHandle.PHP_EOL);
+    }
+
+}
+   
+ 
 
 }
  } catch (S3Exception $e) {

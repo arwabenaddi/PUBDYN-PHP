@@ -52,10 +52,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       //echo $result['Body'];
              $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);  
-      //         echo $content;
-             $filename = $content;
-             $lines = file($filename);
-             echo $lines;
+    echo $content;
+
         
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

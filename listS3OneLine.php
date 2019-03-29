@@ -46,7 +46,14 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        $contents = $result['Body'];
        $content = str_replace("arwa","test",$contents);  
         echo $content;
+ $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
+if (mysqli_connect_error()){
+    die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
+}
+else{
+    mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
 
+}
  } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }

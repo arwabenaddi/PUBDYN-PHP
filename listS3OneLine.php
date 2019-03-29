@@ -50,16 +50,14 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       //echo $result['Body'];
   $text = 'SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";SET AUTOCOMMIT = 0;START TRANSACTION;SET time_zone = "+00:00";';
              $contents = $result['Body'];
-             $content = str_replace("arwa","test",$contents); 
-             
+             $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
-              $sup = preg_replace($text,"",$tests); 
-             echo $sup;
+             echo $tests;
   if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }
   else{
-      mysqli_query($connection,$sup) or die('Erreur insertion file'.$sup.'<br>'.mysqli_error($connection));
+      mysqli_query($connection,$tests) or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
   }
 
 

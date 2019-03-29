@@ -48,47 +48,14 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         'Key'    => $name
     ]);
 
-//Affichage contenu de fichier existant dans le bucket 
-//echo $result['Body'];
-       $contents = $result['Body'];
-       $content = str_replace("arwa","test",$contents);  
-//         echo $content;
-      try {
-            // Temporary variable, used to store current query
-            $templine = '';
-            // Read in entire file
-            $filename = $content;
-            // $filenames = readfile('db.sql'); 
-            //  echo $contents;
-            //  $contents = str_replace(' ','',$contents);
-
-            // $lines = str_replace(CHR(13).CHR(10),"",$contents);
-          
+      //Affichage contenu de fichier existant dans le bucket 
+      //echo $result['Body'];
+             $contents = $result['Body'];
+             $content = str_replace("arwa","test",$contents);  
+      //         echo $content;
+             $filename = $content;
              $lines = file($filename);
              echo $lines;
-            // Loop through each line
-//             foreach ($lines as $line)
-//             {
-//             // Skip it if it's a comment
-//             // || $line == str_replace(CHR(13).CHR(10),"",$line) 
-//             if (substr($line,0,2) == '--' || $line == '' )
-//                 continue;
-
-//             // Add this line to the current segment
-//             $templine = $line;
-
-//             // If it has a semicolon at the end, it's the end of the query
-//             if (substr(trim($line), -1, 1) == ';')
-//             {
-//                 // $line = str_replace(CHR(13).CHR(10),"",$line);
-//                 // Perform the query
-//                 // $insertfile = "INSERT INTO db VALUES ($templine)";
-//                 mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-//                 // Reset temp variable to empty
-//                 $templine = '';
-//             }
-//             }
-      }
         
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

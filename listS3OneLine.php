@@ -50,12 +50,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
-    $fichier = fgetc($content);
+    $fichier = $content;
       while (!feof($fichier)){
-           if (substr($fichier,0,2) == '--' || $fichier == '' )continue;
-            if (substr(trim($fichier), -1, 1) == ';')
+         $fichiers = fgetc($fichier);
+           if (substr($fichiers,0,2) == '--' || $fichiers == '' )continue;
+            if (substr(trim($fichiers), -1, 1) == ';')
             {
-           mysqli_query($connection,$fichier) or die('Erreur insertion file'.$fichier.'<br>'.mysqli_error($connection));
+           mysqli_query($connection,$fichiers) or die('Erreur insertion file'.$fichiers.'<br>'.mysqli_error($connection));
             }
       }
 // If it has a semicolon at the end, it's the end of the query

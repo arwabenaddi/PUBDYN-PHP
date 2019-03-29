@@ -52,7 +52,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
 //              $tests = preg_replace("#(--).*(\n)#", "", $content);
-             $tests = preg_replace('SET AUTOCOMMIT = 0; START TRANSACTION; SET time_zone = "+00:00";', '', $content);
+             $tests = str_replace('SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";SET AUTOCOMMIT = 0;START TRANSACTION;SET time_zone = "+00:00";', '', $content);
              echo $tests;
   if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());

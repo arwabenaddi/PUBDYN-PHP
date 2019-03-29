@@ -58,7 +58,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 // Loop through each line
 mysqli_query($connection,$content) or die('Erreur insertion file'.$content.'<br>'.mysqli_error($connection));
 // If it has a semicolon at the end, it's the end of the query
-} 
+ 
 } 
  catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

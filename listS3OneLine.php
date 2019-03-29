@@ -51,8 +51,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
-             $testsa = str_replace('"NO_AUTO_VALUE_ON_ZERO"','', $content);
-             echo $testsa;
+             $testsa = str_replace('','', $content);
+             echo $tests;
   if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }

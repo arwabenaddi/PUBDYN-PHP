@@ -48,7 +48,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
       //Affichage contenu de fichier existant dans le bucket 
       //echo $result['Body'];
-  $text = "SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";SET AUTOCOMMIT = 0;START TRANSACTION;SET time_zone = "+00:00";";
+  
              $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
 //              $tests = preg_replace("#(--).*(\n)#", "", $content);

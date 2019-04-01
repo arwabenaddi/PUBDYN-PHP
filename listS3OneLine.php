@@ -95,8 +95,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
                   'ExpressionType' => 'SQL'
 
              ]);        
-             echo 'resultest Payload'.$resultest['Payload']; 
-             echo 'resultest Body'.$resultest['Body']; 
+             echo 'resultest Payload'.$resultest; 
              // Temporary variable, used to store current query
             $templine = '';
 

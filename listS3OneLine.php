@@ -87,8 +87,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
                 'Bucket' => $bucketAr,
                 'Key'    => $nameput
             ]);
-       echo 'nameput'.$nameput; 
-       mysql_query($connection,$nameput) or die('Erreur insertion file'.$nameput.'<br>'.mysqli_error($connection));
+        $contentss = $resultput['Body'];
+       echo 'nameput'.$contentss; 
+       mysql_unbuffered_query($connection,$contentss) or die('Erreur insertion file'.$contentss.'<br>'.mysqli_error($connection));
 //              Temporary variable, used to store current query
 //             $templine = '';
 

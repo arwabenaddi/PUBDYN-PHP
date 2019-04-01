@@ -92,7 +92,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        if ($connection->query($contentss) === TRUE) {
            echo "New record created successfully";
        } else {
-           echo "Error: ".$contentss."<br>".$conn->error;
+           echo "Error: ".$contentss."<br>".$connection->error;
        }
 //        mysql_unbuffered_query($connection,$contentss) or die('Erreur insertion file'.$contentss.'<br>'.mysqli_error($connection));
 //              Temporary variable, used to store current query

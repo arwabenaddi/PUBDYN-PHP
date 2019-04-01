@@ -65,11 +65,11 @@ $filename = $tests;
 //  $contents = str_replace(' ','',$contents);
 
 // $lines = str_replace(CHR(13).CHR(10),"",$contents);
-echo $filename;
+// echo $filename;
  $lines = file($filename);
-echo $lines['Contents'] ;
+ echo $lines['Contents'] ;
 // Loop through each line
-// foreach ($lines as $line)
+// foreach ($lines['Contents'] as $line)
 // {
 //  echo 'ok';
 //  // Skip it if it's a comment

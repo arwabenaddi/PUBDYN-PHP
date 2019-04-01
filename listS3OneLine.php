@@ -77,7 +77,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           
          //  echo $lines;
          // Loop through each line
-          $taille = "SELECT LENGTH('$content');";
+          $taille = "SELECT LENGTH('$content')";
           echo  $taille;
           // Skip it if it's a comment
           // || $line == str_replace(CHR(13).CHR(10),"",$line) 

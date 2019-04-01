@@ -90,14 +90,21 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         ]);
         echo $nameput; 
   
-  
+  $resultest = $s3->selectObjectContent([
+        'Bucket' => $bucketAr,
+        'Key'    => $nameput,
+        'ExpressionType' => 'SQL'
+         
+    ]);
+        
+   echo $resultest; 
          // Temporary variable, used to store current query
 $templine = '';
 
         $test = $nameput;
         $filetest = file($test);
 // Loop through each line
-foreach ($filetest as $line)
+foreach($resultest['Payload'] as $line) 
 {
  echo 'ok';
 // Skip it if it's a comment

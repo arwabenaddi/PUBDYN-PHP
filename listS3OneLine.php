@@ -76,61 +76,56 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
          }
        else {
         
-        $objectsput = $s3->listObjects([      
-           'Bucket'=>$bucketAr       
-         ]);
-        foreach ($objectsput['Contents']  as $object) {       
-     //         echo $object['Key'].PHP_EOL;
-             $nameput =  $object['Key'];         
+            $objectsput = $s3->listObjects([      
+               'Bucket'=>$bucketAr       
+             ]);
+            foreach ($objectsput['Contents']  as $object) {       
+                 //  echo $object['Key'].PHP_EOL;
+                 $nameput =  $object['Key'];  
+            }  
+            $resultput = $s3->getObject([
+                'Bucket' => $bucketAr,
+                'Key'    => $nameput
+            ]);
+            echo 'nameput'.$nameput; 
 
-        }  
-        $resultput = $s3->getObject([
-            'Bucket' => $bucketAr,
-            'Key'    => $nameput
-        ]);
-        echo $nameput; 
-  
-  $resultest = $s3->selectObjectContent([
-        'Bucket' => $bucketAr,
-        'Key'    => $nameput,
-        'ExpressionType' => 'SQL'
-         
-    ]);
-        
-   echo $resultest; 
-         // Temporary variable, used to store current query
-$templine = '';
+            $resultest = $s3->selectObjectContent([
+                  'Bucket' => $bucketAr,
+                  'Key'    => $nameput,
+                  'ExpressionType' => 'SQL'
 
-        $test = $nameput;
-        $filetest = file($test);
-// Loop through each line
-foreach($resultest['Payload'] as $line) 
-{
- echo 'ok';
-// Skip it if it's a comment
-// || $line == str_replace(CHR(13).CHR(10),"",$line) 
-if (substr($line,0,2) == '--' || $line == '' )
-    continue;
+             ]);        
+             echo 'resultest Payload'.$resultest['Payload']; 
+             echo 'resultest Body'.$resultest['Body']; 
+             // Temporary variable, used to store current query
+            $templine = '';
 
-// Add this line to the current segment
-$templine = $line;
+                    $test = $nameput;
+                    $filetest = file($test);
+            // Loop through each line
+            foreach($resultest['Payload'] as $line) 
+            {
+               echo 'ok';
+              // Skip it if it's a comment
+              // || $line == str_replace(CHR(13).CHR(10),"",$line) 
+              if (substr($line,0,2) == '--' || $line == '' )
+                  continue;
+              // Add this line to the current segment
+              $templine = $line;
+              // If it has a semicolon at the end, it's the end of the query
+              if (substr(trim($line), -1, 1) == ';')
+              {
+                  // $line = str_replace(CHR(13).CHR(10),"",$line);
+                  // Perform the query
+                  // $insertfile = "INSERT INTO db VALUES ($templine)";
+                  mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+                  // Reset temp variable to empty
+                  $templine = '';
+              }
+            }
+            echo "Tables imported successfully";
 
-// If it has a semicolon at the end, it's the end of the query
-if (substr(trim($line), -1, 1) == ';')
-{
-    // $line = str_replace(CHR(13).CHR(10),"",$line);
-    // Perform the query
-    // $insertfile = "INSERT INTO db VALUES ($templine)";
-    mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-    // Reset temp variable to empty
-    $templine = '';
-}
-}
-  
-  
-         echo "Tables imported successfully";
-
-        }
+      }
     
 
         

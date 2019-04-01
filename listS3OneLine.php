@@ -87,7 +87,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
               // $line = str_replace(CHR(13).CHR(10),"",$line);
               // Perform the query
               // $insertfile = "INSERT INTO db VALUES ($templine)";
-              mysqli_query($connection,'`'.$templine.'`') or die('Erreur insertion file <br>'.mysqli_error($connection));
+              mysqli_query($connection,'`'.$templine.'`') or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
               // Reset temp variable to empty
               $templine = '';
           }

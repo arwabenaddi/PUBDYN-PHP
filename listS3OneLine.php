@@ -82,6 +82,7 @@ $filename = $name;
 // $lines = str_replace(CHR(13).CHR(10),"",$contents);
 echo $filename;
  $lines = file($filename);
+        echo $lines;
 // Loop through each line
 foreach ($lines as $line)
 {

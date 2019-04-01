@@ -58,7 +58,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
          $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
-             $tests = preg_replace("#(--).*(\n)#", "", $content);
+            
       
           if (mysqli_connect_error()){
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());

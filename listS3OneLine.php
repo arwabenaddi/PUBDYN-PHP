@@ -39,15 +39,25 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
    foreach ($objects['Contents']  as $object) {       
 //         echo $object['Key'].PHP_EOL;
         $name =  $object['Key'];         
+
+   }  
+    // Get the object.
+
+
+      //Affichage contenu de fichier existant dans le bucket 
+      //echo $result['Body'];
+             
+//              $testsa = str_replace('','', $content);
+//              echo $tests;
     
         $result = $s3->getObject([
             'Bucket' => $bucket,
             'Key'    => $name
-        ]);
-    
-             $contents = $result['Body'];
+        ]);    
+ 
+         $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
-             $tests = preg_replace("#(--).*(\n)#", "", $content);
+//              $tests = preg_replace("#(--).*(\n)#", "", $content);
       
           if (mysqli_connect_error()){
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
@@ -64,7 +74,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
          // $lines = str_replace(CHR(13).CHR(10),"",$contents);
          // echo $filename;
-          $lines = $tests;
+          $lines = $content;
          //  echo $lines;
          // Loop through each line
           $taille = sizeof($lines);
@@ -93,21 +103,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           }
          }
     
-    
-    
-    
-   }  
-    // Get the object.
-
-
-      //Affichage contenu de fichier existant dans le bucket 
-      //echo $result['Body'];
-             
-//              $testsa = str_replace('','', $content);
-//              echo $tests;
-
- 
- 
 
         
 } catch (S3Exception $e) {

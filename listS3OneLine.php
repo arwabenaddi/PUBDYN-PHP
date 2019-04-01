@@ -93,8 +93,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             $templine = '';
 
                $test = $nameput;
-               $filetest = file($resultput['Body']);
-               echo 'filetest : '.$filetest; 
+               $filetest = $resultput['Body'];
+               echo $filetest; 
 //             Loop through each line
             foreach($filetest as $line) 
             {

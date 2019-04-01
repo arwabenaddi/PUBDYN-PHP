@@ -67,23 +67,23 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           $lines = $tests;
          //  echo $lines;
          // Loop through each line
-
+          
           echo 'ok';
           // Skip it if it's a comment
           // || $line == str_replace(CHR(13).CHR(10),"",$line) 
-          if (substr($line,0,2) == '--' || $line == '' ){
+          if (substr($lines,0,2) == '--' || $lines == '' ){
               continue;
           }
           // Add this line to the current segment
-          $templine = $line;
+          $templine = $lines;
 
           // If it has a semicolon at the end, it's the end of the query
-          if (substr(trim($line), -1, 1) == ';')
+          if (substr(trim($lines), -1, 1) == ';')
           {
               // $line = str_replace(CHR(13).CHR(10),"",$line);
               // Perform the query
               // $insertfile = "INSERT INTO db VALUES ($templine)";
-              mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+              mysqli_query($connection,$lines) or die('Erreur insertion file'.$lines.'<br>'.mysqli_error($connection));
               // Reset temp variable to empty
               $templine = '';
           

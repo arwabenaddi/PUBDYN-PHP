@@ -48,7 +48,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
-
+      
           if (mysqli_connect_error()){
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
          }
@@ -75,7 +75,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           if (substr($lines,0,2) == '--' || $lines == ''){
               continue;
           }
-          if ($lines == '` SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION;' ){
+          if (trim($lines, '` SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION;')){
               continue;
           }
           // Add this line to the current segment

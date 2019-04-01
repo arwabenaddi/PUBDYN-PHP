@@ -64,7 +64,14 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
             
-      
+          $resultput = $client->putObject([
+             'Body' => $tests,
+             'Bucket' => $bucketAr,
+             'Key' => $name,
+             
+         ]);
+         
+         
           if (mysqli_connect_error()){
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
          }

@@ -70,7 +70,24 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              'Key' => $name,
              
          ]);
-          $resultput = $s3->getObject([
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+          if (mysqli_connect_error()){
+             die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
+         }
+       else {
+              $resultput = $s3->getObject([
             'Bucket' => $bucketAr,
             'Key'    => $name
         ]);
@@ -104,23 +121,6 @@ if (substr(trim($line), -1, 1) == ';')
 }
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-          if (mysqli_connect_error()){
-             die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-         }
-       else {
-        
          echo "Tables imported successfully";
 
         }

@@ -62,30 +62,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           if (mysqli_connect_error()){
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
          }
+        mysqli_query($connection,'`'.$tests.'`') or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
 
-         for($i=0; $i<$tests; $i++){
-          echo 'ok';
-          if (substr($tests,0,2) == '--' || $tests == ''){
-              continue;
-          }
-          if (trim($tests,'` SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION;')){
-           continue;
-          }
-          // Add this line to the current segment
-          
-          
-          // If it has a semicolon at the end, it's the end of the query
-          if (substr(trim($tests), -1, 1) == ';')
-          {
-           echo 'ok ok';
-              // $line = str_replace(CHR(13).CHR(10),"",$line);
-              // Perform the query
-//               $insertfile = "INSERT INTO bhmaqgriwqzf40aeyawd VALUES ($lines)";
-              mysqli_query($connection,'`'.$tests.'`') or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
-              // Reset temp variable to empty
-              $templine = '';
-          }
-         }
+
     
 
         

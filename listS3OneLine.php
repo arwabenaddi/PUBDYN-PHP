@@ -5,13 +5,18 @@ require_once $racine.'aws-autoloader.php';
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 // connect to MySql 
-$host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clever Cloud
-$dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
-$dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
-$dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
+// $host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clever Cloud
+// $dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
+// $dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
+// $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
+  $bdd = new PDO(
+    	"mysql:host=".getenv("bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com").";dbname=".getenv("bhmaqgriwqzf40aeyawd"),
+    	getenv("un0nkeibvggep0ix"),
+    	getenv("UiS485fnESJLjbyP2ePM")
+  );
 
 //connect to Mysql
- $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
+ $connection=mysqli_connect($bdd);
 
 //connect to S3
 $bucket = 'new-bucket-10ed2760';

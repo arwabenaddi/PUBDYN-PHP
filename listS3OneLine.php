@@ -64,40 +64,44 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
             
-          $resultput = $s3->putObject([
+          $putobject = $s3->putObject([
              'Body' => $tests,
              'Bucket' => $bucketAr,
              'Key' => $name,
              
          ]);
+          $resultput = $s3->getObject([
+            'Bucket' => $bucketAr,
+            'Key'    => $name
+        ]);
          
   echo $resultput['body'];
   
-//          // Temporary variable, used to store current query
-// $templine = '';
+         // Temporary variable, used to store current query
+$templine = '';
 
-// // Loop through each line
-// foreach ($lines as $line)
-// {
-// // Skip it if it's a comment
-// // || $line == str_replace(CHR(13).CHR(10),"",$line) 
-// if (substr($line,0,2) == '--' || $line == '' )
-//     continue;
+// Loop through each line
+foreach ($resultput['body'] as $line)
+{
+// Skip it if it's a comment
+// || $line == str_replace(CHR(13).CHR(10),"",$line) 
+if (substr($line,0,2) == '--' || $line == '' )
+    continue;
 
-// // Add this line to the current segment
-// $templine = $line;
+// Add this line to the current segment
+$templine = $line;
 
-// // If it has a semicolon at the end, it's the end of the query
-// if (substr(trim($line), -1, 1) == ';')
-// {
-//     // $line = str_replace(CHR(13).CHR(10),"",$line);
-//     // Perform the query
-//     // $insertfile = "INSERT INTO db VALUES ($templine)";
-//     mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-//     // Reset temp variable to empty
-//     $templine = '';
-// }
-// }
+// If it has a semicolon at the end, it's the end of the query
+if (substr(trim($line), -1, 1) == ';')
+{
+    // $line = str_replace(CHR(13).CHR(10),"",$line);
+    // Perform the query
+    // $insertfile = "INSERT INTO db VALUES ($templine)";
+    mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+    // Reset temp variable to empty
+    $templine = '';
+}
+}
   
   
   

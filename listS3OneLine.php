@@ -67,15 +67,16 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           $lines = $tests;
          //  echo $lines;
          // Loop through each line
-          foreach ($lines as $line){}
+          $taille = sizeof($lines);
           // Skip it if it's a comment
           // || $line == str_replace(CHR(13).CHR(10),"",$line) 
+         for($i=0; $i<$taille; $i++){
           if (substr($line,0,2) == '--' || $line == '' ){
               continue;
           }
           // Add this line to the current segment
           $templine = $line;
-
+          
           // If it has a semicolon at the end, it's the end of the query
           if (substr(trim($line), -1, 1) == ';')
           {
@@ -85,7 +86,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
               mysqli_query($connection,'`'.$line.'`') or die('Erreur insertion file <br>'.mysqli_error($connection));
               // Reset temp variable to empty
               $templine = '';
-          
+          }
          }
     
     

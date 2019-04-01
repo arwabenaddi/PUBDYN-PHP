@@ -74,36 +74,36 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
          // $lines = str_replace(CHR(13).CHR(10),"",$contents);
          // echo $filename;
-          $lines = $content;
+          
          //  echo $lines;
          // Loop through each line
-          $taille = sizeof($lines);
+          $taille = "SELECT LENGTH('$content');";
           echo  $taille;
           // Skip it if it's a comment
           // || $line == str_replace(CHR(13).CHR(10),"",$line) 
-         for($i=0; $i<$taille; $i++){
-          echo 'ok';
-          if (substr($lines,0,2) == '--' || $lines == ''){
-              continue;
-          }
-//           if (trim($lines, '` SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION;')){
+//          for($i=0; $i<$taille; $i++){
+//           echo 'ok';
+//           if (substr($lines,0,2) == '--' || $lines == ''){
 //               continue;
 //           }
-          // Add this line to the current segment
+// //           if (trim($lines, '` SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION;')){
+// //               continue;
+// //           }
+//           // Add this line to the current segment
           
           
-          // If it has a semicolon at the end, it's the end of the query
-          if (substr(trim($lines), -1, 1) == ';')
-          {
-           echo 'ok ok';
-              // $line = str_replace(CHR(13).CHR(10),"",$line);
-              // Perform the query
-//               $insertfile = "INSERT INTO bhmaqgriwqzf40aeyawd VALUES ($lines)";
-              mysqli_query($connection,'`'.$lines.'`') or die('Erreur insertion file'.$lines.'<br>'.mysqli_error($connection));
-              // Reset temp variable to empty
-              $templine = '';
-          }
-         }
+//           // If it has a semicolon at the end, it's the end of the query
+//           if (substr(trim($lines), -1, 1) == ';')
+//           {
+//            echo 'ok ok';
+//               // $line = str_replace(CHR(13).CHR(10),"",$line);
+//               // Perform the query
+// //               $insertfile = "INSERT INTO bhmaqgriwqzf40aeyawd VALUES ($lines)";
+//               mysqli_query($connection,'`'.$lines.'`') or die('Erreur insertion file'.$lines.'<br>'.mysqli_error($connection));
+//               // Reset temp variable to empty
+//               $templine = '';
+//           }
+//          }
     
 
         

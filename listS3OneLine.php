@@ -55,7 +55,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     
     
     
-          $templine = '';
+
          // Read in entire file
 
          // $filenames = readfile('db.sql'); 
@@ -79,15 +79,15 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
               continue;
           }
           // Add this line to the current segment
-          $templine = $lines;
+          
           
           // If it has a semicolon at the end, it's the end of the query
-          if (substr(trim($templine), -1, 1) == ';')
+          if (substr(trim($lines), -1, 1) == ';')
           {
               // $line = str_replace(CHR(13).CHR(10),"",$line);
               // Perform the query
-              // $insertfile = "INSERT INTO db VALUES ($templine)";
-              mysqli_query($connection,'`'.$templine.'`') or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+              $insertfile = "INSERT INTO bhmaqgriwqzf40aeyawd VALUES ($lines)";
+              mysqli_query($connection,'`'.$insertfile.'`') or die('Erreur insertion file'.$insertfile.'<br>'.mysqli_error($connection));
               // Reset temp variable to empty
               $templine = '';
           }

@@ -72,7 +72,10 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           // || $line == str_replace(CHR(13).CHR(10),"",$line) 
          for($i=0; $i<$taille; $i++){
           echo 'ok';
-          if (substr($lines,0,2) == '--' || $lines == '' ){
+          if (substr($lines,0,2) == '--' || $lines == ''){
+              continue;
+          }
+          if ($lines == '` SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION;' ){
               continue;
           }
           // Add this line to the current segment

@@ -83,7 +83,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           $stmt = sqlsrv_query( $conn, $sql , $params, $options );
 
           $row_count = sqlsrv_num_rows( $stmt );
-          echo 'row_count'.$row_count;
+          echo $row_count;
           // Skip it if it's a comment
           // || $line == str_replace(CHR(13).CHR(10),"",$line) 
 //          for($i=0; $i<$taille; $i++){

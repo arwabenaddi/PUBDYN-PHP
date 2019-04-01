@@ -89,32 +89,32 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             ]);
             echo 'nameput'.$nameput; 
        mysqli_query($connection,$nameput) or die('Erreur insertion file'.$nameput.'<br>'.mysqli_error($connection));
-             // Temporary variable, used to store current query
-//             $templine = '';
+//              Temporary variable, used to store current query
+            $templine = '';
 
-//                     $test = $nameput;
-//                     $filetest = file($test);
-            // Loop through each line
-//             foreach($resultput['Contents'] as $line) 
-//             {
-//                echo 'ok';
-//               // Skip it if it's a comment
-//               // || $line == str_replace(CHR(13).CHR(10),"",$line) 
-//               if (substr($line,0,2) == '--' || $line == '' )
-//                   continue;
-//               // Add this line to the current segment
-//               $templine = $line;
-//               // If it has a semicolon at the end, it's the end of the query
-//               if (substr(trim($line), -1, 1) == ';')
-//               {
-//                   // $line = str_replace(CHR(13).CHR(10),"",$line);
-//                   // Perform the query
-//                   // $insertfile = "INSERT INTO db VALUES ($templine)";
-//                   mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
-//                   // Reset temp variable to empty
-//                   $templine = '';
-//               }
-//             }
+               $test = $nameput;
+               $filetest = file($nameput);
+//             Loop through each line
+            foreach($filetest as $line) 
+            {
+               echo 'ok';
+              // Skip it if it's a comment
+              // || $line == str_replace(CHR(13).CHR(10),"",$line) 
+              if (substr($line,0,2) == '--' || $line == '' )
+                  continue;
+              // Add this line to the current segment
+              $templine = $line;
+              // If it has a semicolon at the end, it's the end of the query
+              if (substr(trim($line), -1, 1) == ';')
+              {
+                  // $line = str_replace(CHR(13).CHR(10),"",$line);
+                  // Perform the query
+                  // $insertfile = "INSERT INTO db VALUES ($templine)";
+                  mysqli_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+                  // Reset temp variable to empty
+                  $templine = '';
+              }
+            }
             echo "Tables imported successfully";
 
       }

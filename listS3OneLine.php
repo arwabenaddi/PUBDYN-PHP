@@ -51,14 +51,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
-             $testss = preg_replace("#(/*).*(*/)#", "", $tests);
 //              $testsa = str_replace('','', $content);
 //              echo $tests;
   if (mysqli_connect_error()){
     die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
 }
   else{
-      mysqli_query($connection,$testss) or die('Erreur insertion file'.$testss.'<br>'.mysqli_error($connection));
+      mysqli_query($connection,$tests) or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
   }
 
 

@@ -64,9 +64,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
          }
        else {
-               if (trim($tests,'` SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION;')){
-                   continue;
-               }
+
              mysqli_query($connection,'`'.$tests.'`') or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
 
         }

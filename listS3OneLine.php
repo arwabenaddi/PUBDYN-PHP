@@ -64,7 +64,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
             
-          $resultput = $client->putObject([
+          $resultput = $s3->putObject([
              'Body' => $tests,
              'Bucket' => $bucketAr,
              'Key' => $name,

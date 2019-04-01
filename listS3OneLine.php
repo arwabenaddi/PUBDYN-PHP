@@ -78,6 +78,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
          //  echo $lines;
          // Loop through each line
           $taille = sizeof($lines);
+          echo  $taille;
           // Skip it if it's a comment
           // || $line == str_replace(CHR(13).CHR(10),"",$line) 
          for($i=0; $i<$taille; $i++){
@@ -94,6 +95,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
           // If it has a semicolon at the end, it's the end of the query
           if (substr(trim($lines), -1, 1) == ';')
           {
+           echo 'ok ok';
               // $line = str_replace(CHR(13).CHR(10),"",$line);
               // Perform the query
 //               $insertfile = "INSERT INTO bhmaqgriwqzf40aeyawd VALUES ($lines)";

@@ -87,11 +87,20 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
          }
        else {
-              $resultput = $s3->getObject([
+        
+        $objectsput = $s3->listObjects([      
+           'Bucket'=>$bucketAr       
+         ]);
+        foreach ($objectsput['Contents']  as $object) {       
+     //         echo $object['Key'].PHP_EOL;
+             $nameput =  $object['Key'];         
+
+        }  
+        $resultput = $s3->getObject([
             'Bucket' => $bucketAr,
-            'Key'    => $name
+            'Key'    => $nameput
         ]);
-         
+        echo $nameput; 
   echo $resultput['body'];
   
          // Temporary variable, used to store current query

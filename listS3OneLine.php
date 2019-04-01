@@ -71,18 +71,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              
          ]);
     
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
           if (mysqli_connect_error()){
              die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
          }
@@ -101,14 +89,17 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             'Key'    => $nameput
         ]);
         echo $nameput; 
-  echo $resultput['body'];
+  
   
          // Temporary variable, used to store current query
 $templine = '';
 
+        $test = $nameput;
+        $filetest = file($test);
 // Loop through each line
-foreach ($resultput['body'] as $line)
+foreach ($filetest as $line)
 {
+ echo 'ok';
 // Skip it if it's a comment
 // || $line == str_replace(CHR(13).CHR(10),"",$line) 
 if (substr($line,0,2) == '--' || $line == '' )

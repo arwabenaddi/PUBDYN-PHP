@@ -88,7 +88,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
                 'Key'    => $nameput
             ]);
 //             echo 'nameput'.$nameput; 
-       mysql_unbuffered_query($connection,$resultput['Body']) or die('Erreur insertion file'.$resultput['Body'].'<br>'.mysqli_error($connection));
+       mysql_query($connection,$resultput['Body']) or die('Erreur insertion file'.$resultput['Body'].'<br>'.mysqli_error($connection));
 //              Temporary variable, used to store current query
 //             $templine = '';
 

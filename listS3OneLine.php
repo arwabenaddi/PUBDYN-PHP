@@ -89,7 +89,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             ]);
         $contentss = $resultput['Body'];
 //        echo 'nameput'.$contentss; 
-       if ($conn->query($contentss) === TRUE) {
+       if ($connection->query($contentss) === TRUE) {
            echo "New record created successfully";
        } else {
            echo "Error: ".$contentss."<br>".$conn->error;

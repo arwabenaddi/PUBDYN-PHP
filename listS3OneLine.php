@@ -70,7 +70,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //             echo "Tables imported successfully";
 //        }
    }
-           $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, 'arwatest', 'arwa', 0)');
+           $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, "arwatest", "arwa", 0)');
         
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

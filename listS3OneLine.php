@@ -67,8 +67,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             ]);
         $contentss = $resultput['Body'];
 //        echo 'nameput'.$contentss; 
-       $insertfile = "INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, 'arwa', 'arwa', 0)";
-       mysql_query($connection,$insertfile) or die('Erreur insertion file'.$insertfile.'<br>'.mysqli_error($connection));
+       $reponse = $bdd->$connection('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, 'arwa', 'arwa', 0)');
 
             echo "Tables imported successfully";
 

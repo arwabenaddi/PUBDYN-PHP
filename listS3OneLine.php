@@ -89,9 +89,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             ]);
         $contentss = $resultput['Body'];
 //        echo 'nameput'.$contentss; 
-       if ($connection->mysql_query($contentss) === TRUE) {
-           echo "New record created successfully";
-       }
+       $insertfile = "INSERT INTO bhmaqgriwqzf40aeyawd VALUES ($contentss)";
+       mysql_unbuffered_query($connection,$insertfile) or die('Erreur insertion file'.$insertfile.'<br>'.mysqli_error($connection));
 //        mysql_unbuffered_query($connection,$contentss) or die('Erreur insertion file'.$contentss.'<br>'.mysqli_error($connection));
 //              Temporary variable, used to store current query
 //             $templine = '';
@@ -114,8 +113,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //               {
 //                   // $line = str_replace(CHR(13).CHR(10),"",$line);
 //                   // Perform the query
-//                   // $insertfile = "INSERT INTO db VALUES ($templine)";
-//                   mysql_unbuffered_query($connection,$templine) or die('Erreur insertion file'.$templine.'<br>'.mysqli_error($connection));
+//                   
 //                   // Reset temp variable to empty
 //                   $templine = '';
 //               }

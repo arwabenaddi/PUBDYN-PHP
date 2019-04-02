@@ -91,20 +91,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //        echo 'nameput'.$contentss; 
        if ($connection->query($contentss) === TRUE) {
            echo "New record created successfully";
-              if (substr($contentss,0,2) == '--' || $contentss == '' )
-                  continue;
-              // If it has a semicolon at the end, it's the end of the query
-              if (substr(trim($contentss), -1, 1) == ';')
-              {
-                  // $line = str_replace(CHR(13).CHR(10),"",$line);
-                  // Perform the query
-                  // $insertfile = "INSERT INTO db VALUES ($templine)";
-                  mysql_unbuffered_query($connection,$contentss) or die('Erreur insertion file'.$contentss.'<br>'.mysqli_error($connection));
-                  // Reset temp variable to empty
-                  $templine = '';
-              }
-       } else {
-           echo "Error: ".$contentss."<br>".$connection->error;
        }
 //        mysql_unbuffered_query($connection,$contentss) or die('Erreur insertion file'.$contentss.'<br>'.mysqli_error($connection));
 //              Temporary variable, used to store current query
@@ -136,7 +122,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //             }
             echo "Tables imported successfully";
 
-     
+       }
     
 
         

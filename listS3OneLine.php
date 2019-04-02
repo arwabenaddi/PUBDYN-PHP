@@ -10,10 +10,13 @@ $host = "bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com";//host Mysql Clev
 $dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
 $dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
 $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
- $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
+//  $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
 //connect to S3
-$bucket = 'new-bucket-10ed2760';
+// $bucket = 'new-bucket-10ed2760';
 $bucketAr = 'archivage';
+$bucket  = "new-bucket-10ed2760";
+$keynamesql  = "onetrack_2019-03-29.sql";
+// $name  = "onetrack_2019-03-29.zip";
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
 $CELLAR_ADDON_KEY_ID = 'SW016A92CMAJ79EUZY77';
 $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
@@ -38,41 +41,35 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         $name =  $object['Key'];     
         $result = $s3->getObject([
             'Bucket' => $bucket,
-            'Key'    => $name
-        ]);     
-         $contents = $result['Body'];
-             $content = str_replace("arwa","test",$contents);              
-             $tests = preg_replace("#(--).*(\n)#", "", $content);
-             $tests = preg_replace('/\*([^\*]+)\*/',"", $content);
-             $tests = str_replace("`","", $tests);
-          $putobject = $s3->putObject([
-             'Body' => $tests,
-             'Bucket' => $bucketAr,
-             'Key' => $name,             
-         ]);    
-        if (mysqli_connect_error()){
-             die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-        }
-//        else {
-        
-//             $objectsput = $s3->listObjects([      
-//                'Bucket'=>$bucketAr       
-//              ]);
-//             foreach ($objectsput['Contents']  as $object) {       
-//                  //  echo $object['Key'].PHP_EOL;
-//                  $nameput =  $object['Key'];  
-//             }  
-//             $resultput = $s3->getObject([
-//                 'Bucket' => $bucketAr,
-//                 'Key'    => $nameput
-//             ]);
-//         $contentss = $resultput['Body'];
-// //        echo 'nameput'.$contentss; 
-//             echo "Tables imported successfully";
-//        }
-   }
-               
-           $reponse = $connection->multi_query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
+            'Key'    => $name,
+            'SaveAs' => "/var/tmp/".$name
+        ]);   
+
+    
+    if (!file_exists("/var/tmp/".$name)) {
+        echo "DONT EXIST!!!!!!" . "<br> ";
+    }
+    else
+    {
+        echo "EXIST!!!!!!" . "<br> ";
+    }
+    $zip = new ZipArchive;
+    if ($zip->open("/var/tmp/".$name) === TRUE) {
+        $zip->extractTo('/var/tmp/');
+        $zip->close();
+        echo 'ok dezip' . "<br> ";
+    } else {
+        echo 'échec dezip' . "<br> ";
+    }
+    
+       $str=file_get_contents("/var/tmp/".$keynamesql);
+        $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
+       file_put_contents("/var/tmp/".$keyname, $str);
+ $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -p bhmaqgriwqzf40aeyawd  < /var/tmp/".$keynamesql;
+            $output = shell_exec($command);   
+             echo $output;
+       
+//            $reponse = $connection->multi_query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
         
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

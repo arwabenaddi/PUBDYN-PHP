@@ -50,30 +50,15 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              'Key' => $name,             
          ]);    
 
-//        else {
-        
-//             $objectsput = $s3->listObjects([      
-//                'Bucket'=>$bucketAr       
-//              ]);
-//             foreach ($objectsput['Contents']  as $object) {       
-//                  //  echo $object['Key'].PHP_EOL;
-//                  $nameput =  $object['Key'];  
-//             }  
-//             $resultput = $s3->getObject([
-//                 'Bucket' => $bucketAr,
-//                 'Key'    => $nameput
-//             ]);
-//         $contentss = $resultput['Body'];
-// //        echo 'nameput'.$contentss; 
-
-//             echo "Tables imported successfully";
-
-//        }
+          $resultput = $s3->getObject([
+                'Bucket' => $bucketAr,
+                'Key'    => $nameput
+            ]);
    }
    if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
-    $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, "arwa", "arwa", 0)');
+    $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, "aarwa", "arwa", 0)');
 
 
         

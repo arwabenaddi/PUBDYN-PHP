@@ -58,8 +58,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
    if (mysqli_connect_error()){
         die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
     }
+  else{
     $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, "aarwa", "arwa", 0)');
-
+  }
 
         
 } catch (S3Exception $e) {

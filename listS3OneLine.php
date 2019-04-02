@@ -1,3 +1,4 @@
+    
 <?php
 // Decode the argument of the batch
 $racine=substr($argv[0],0,strpos($argv[0], "list"));
@@ -10,7 +11,6 @@ $dbUsername = "un0nkeibvggep0ix";//Nom d'utilisateur  Mysql Clever Cloud
 $dbPass = "UiS485fnESJLjbyP2ePM";//Mot de passe Mysql Clever Cloud
 $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
  $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
-
 //connect to S3
 $bucket = 'new-bucket-10ed2760';
 $bucketAr = 'archivage';
@@ -49,22 +49,30 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              'Bucket' => $bucketAr,
              'Key' => $name,             
          ]);    
-
-          $resultput = $s3->getObject([
-                'Bucket' => $bucketAr,
-                'Key'    => $nameput
-            ]);
+        if (mysqli_connect_error()){
+             die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
+        }
+//        else {
+        
+//             $objectsput = $s3->listObjects([      
+//                'Bucket'=>$bucketAr       
+//              ]);
+//             foreach ($objectsput['Contents']  as $object) {       
+//                  //  echo $object['Key'].PHP_EOL;
+//                  $nameput =  $object['Key'];  
+//             }  
+//             $resultput = $s3->getObject([
+//                 'Bucket' => $bucketAr,
+//                 'Key'    => $nameput
+//             ]);
+//         $contentss = $resultput['Body'];
+// //        echo 'nameput'.$contentss; 
+//             echo "Tables imported successfully";
+//        }
    }
-   if (mysqli_connect_error()){
-        die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-    }
-  else{
-    $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, "aarwa", "arwa", 0)');
-  }
-
+           $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, 'arwa', 'arwa', 0)');
         
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }
-
 ?>

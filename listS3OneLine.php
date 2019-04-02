@@ -89,7 +89,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             ]);
         $contentss = $resultput['Body'];
 //        echo 'nameput'.$contentss; 
-       if ($connection->query($contentss) === TRUE) {
+       if ($connection->mysql_query($contentss) === TRUE) {
            echo "New record created successfully";
        }
 //        mysql_unbuffered_query($connection,$contentss) or die('Erreur insertion file'.$contentss.'<br>'.mysqli_error($connection));

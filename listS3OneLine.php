@@ -49,9 +49,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              'Bucket' => $bucketAr,
              'Key' => $name,             
          ]);    
-        if (mysqli_connect_error()){
-             die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
-        }
+
 //        else {
         
 //             $objectsput = $s3->listObjects([      
@@ -72,7 +70,10 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 
 //        }
    }
-           $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, 'arwa', 'arwa', 0)');
+   if (mysqli_connect_error()){
+        die('connect Error ('.mysqli_connect_error().')'.mysqli_connect_error());
+    }
+    $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (19, "arwa", "arwa", 0)');
 
 
         
@@ -81,4 +82,3 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
  }
 
 ?>
-

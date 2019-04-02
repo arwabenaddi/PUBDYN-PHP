@@ -51,19 +51,12 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     {
         echo "EXIST!!!!!!" . "<br> ";
     }
-    $zip = new ZipArchive;
-    if ($zip->open("/var/tmp/".$name) === TRUE) {
-        $zip->extractTo('/var/tmp/');
-        $zip->close();
-        echo 'ok dezip' . "<br> ";
-    } else {
-        echo 'échec dezip' . "<br> ";
-    }
+
     
-       $str=file_get_contents("/var/tmp/".$keynamesql);
+       $str=file_get_contents("/var/tmp/".$name);
         $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
        file_put_contents("/var/tmp/".$keyname, $str);
- $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -p bhmaqgriwqzf40aeyawd  < /var/tmp/".$keynamesql;
+ $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -p bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
             $output = shell_exec($command);   
              echo $output;
        

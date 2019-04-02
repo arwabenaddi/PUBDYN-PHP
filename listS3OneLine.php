@@ -43,7 +43,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
          $contents = $result['Body'];
              $content = str_replace("arwa","test",$contents);              
              $tests = preg_replace("#(--).*(\n)#", "", $content);
-            
+             $tests = preg_replace('/\*([^\*]+)\*/',"", $content);
+             $tests = str_replace("`","", $tests);
           $putobject = $s3->putObject([
              'Body' => $tests,
              'Bucket' => $bucketAr,
@@ -70,7 +71,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //             echo "Tables imported successfully";
 //        }
    }
-           $reponse = $connection->query('INSERT INTO benchmark (id_benchmark,nom,nom_en,defaut) VALUES (55, "arwatest", "arwa", 0)');
+               
+           $reponse = $connection->query($tests);
         
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

@@ -55,10 +55,10 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     
        $str=file_get_contents("/var/tmp/".$name);
         $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
-        echo $str;
+        //echo $str;
        file_put_contents("/var/tmp/".$name, $str);
          $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
-            $output = shell_exec($commchand);   
+            $output = shell_exec($command);   
              echo $output;
        
 //            $reponse = $connection->multi_query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));

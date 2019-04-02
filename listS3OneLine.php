@@ -1,4 +1,3 @@
-    
 <?php
 // Decode the argument of the batch
 $racine=substr($argv[0],0,strpos($argv[0], "list"));
@@ -44,7 +43,6 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             'Key'    => $name,
             'SaveAs' => "/var/tmp/".$name
         ]);   
-
     
     if (!file_exists("/var/tmp/".$name)) {
         echo "DONT EXIST!!!!!!" . "<br> ";
@@ -70,7 +68,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
              echo $output;
        
 //            $reponse = $connection->multi_query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
-        
+}     
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
  }

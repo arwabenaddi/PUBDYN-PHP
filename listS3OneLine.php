@@ -72,7 +72,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //        }
    }
                
-           $reponse = $connection->query($tests);
+           $reponse = $connection->query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
         
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;

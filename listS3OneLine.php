@@ -58,6 +58,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         //echo $str;
        file_put_contents("/var/tmp/".$name, $str);
        $resultput = $s3->putObject([
+               'Body' => $str,
                'Bucket' => $bucketAr,
                'Key'    => $name
        ]);

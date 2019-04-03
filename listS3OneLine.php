@@ -37,7 +37,11 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     $objects = $s3->listObjects([      
       'Bucket'=>$bucket       
     ]);
-    echo $objects
+     foreach ($objects['Contents']  as $object) {  
+     $name =  $object['Key']; 
+    echo $name;
+        
+     }
 //    foreach ($objects['Contents']  as $object) {  
 //        $name =  $object['Key']; 
 //        if(is_file($name){                  

@@ -37,39 +37,40 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     $objects = $s3->listObjects([      
       'Bucket'=>$bucket       
     ]);
-   foreach ($objects['Contents']  as $object) {  
-       $name =  $object['Key']; 
-       if(is_file($name){                  
-                    $result = $s3->getObject([
-                        'Bucket' => $bucket,
-                        'Key'    => $name,
-                        'SaveAs' => "/var/tmp/".$name
-                    ]);     
+    echo $objects
+//    foreach ($objects['Contents']  as $object) {  
+//        $name =  $object['Key']; 
+//        if(is_file($name){                  
+//                     $result = $s3->getObject([
+//                         'Bucket' => $bucket,
+//                         'Key'    => $name,
+//                         'SaveAs' => "/var/tmp/".$name
+//                     ]);     
 
                  
-                if (!file_exists("/var/tmp/".$name)) {
-                    echo "DONT EXIST!!!!!!" . "<br> ";
-                }
-                else
-                {
-                    echo "EXIST!!!!!!" . "<br> ";
-                }
+//                 if (!file_exists("/var/tmp/".$name)) {
+//                     echo "DONT EXIST!!!!!!" . "<br> ";
+//                 }
+//                 else
+//                 {
+//                     echo "EXIST!!!!!!" . "<br> ";
+//                 }
 
 
-                   $str=file_get_contents("/var/tmp/".$name);
-                    $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
+//                    $str=file_get_contents("/var/tmp/".$name);
+//                     $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
 
 
-                    //echo $str;
-                   file_put_contents("/var/tmp/".$name, $str);
-                     $putobject = $s3->putObject([
-                                  'Body' => $str,
-                                  'Bucket' => $bucketAr,
-                                  'Key' => $name,             
-                     ]);   
-          // traitement pour le fichier trouvé
-       } 
-    }
+//                     //echo $str;
+//                    file_put_contents("/var/tmp/".$name, $str);
+//                      $putobject = $s3->putObject([
+//                                   'Body' => $str,
+//                                   'Bucket' => $bucketAr,
+//                                   'Key' => $name,             
+//                      ]);   
+//           // traitement pour le fichier trouvé
+//        } 
+//     }
        
 //          $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
 //             $output = shell_exec($command);   

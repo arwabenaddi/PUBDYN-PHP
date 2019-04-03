@@ -38,21 +38,25 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
     ]);
    foreach ($objects['Contents']  as $object) {   
        
-         foreach($object as $key) {
+         
 //              print "$key => $value\n";
             //$extension = pathinfo($key, PATHINFO_EXTENSION);
               // echo $extension; 
             //if ($extension = "7z"){
-            $name = $key['name'];
-            if(!endsWith($name, '/') || !endsWith($name, '.7z')){  
-            //echo 'ok ext';
-               //echo '<br>';
-                $result = $s3->getObject([
+            $name = $object['name'];
+            if(!endsWith($name, '/') || !endsWith($name, '.7z'))
+            {  
+       
+               
+               
+               $result = $s3->getObject([
                   'Bucket' => $bucket,
                   'Key' => $name,
                   'SaveAs' => "/var/tmp/".$name
                ]); 
-                if (!file_exists("/var/tmp/".$name)) {
+               
+               
+               if (!file_exists("/var/tmp/".$name)) {
                     echo "DONT EXIST!!!!!!" . "<br> ";
                 }
                 else
@@ -74,7 +78,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //                    $output = shell_exec($command);   
 //                    echo $output;
             }
-         }
+         
         
     }  
 

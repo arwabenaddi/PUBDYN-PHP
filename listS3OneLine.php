@@ -43,8 +43,9 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             'Bucket' => $bucket,
             'Key'    => $name,
             'SaveAs' => "/var/tmp/".$name
-        ]); 
-      
+        ]);     
+
+    }  
           if (!file_exists("/var/tmp/".$name)) {
         echo "DONT EXIST!!!!!!" . "<br> ";
     }
@@ -61,15 +62,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         //echo $str;
        file_put_contents("/var/tmp/".$name, $str);
         $resultput = $s3->putObject([
-               'Body' => $str,
+               'SourceFile' => "/var/tmp/".$name,
                'Bucket' => $bucketest,
-               'Key'    => $name
+               'Key'  => $name
        ]);
          $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
             $output = shell_exec($command);   
              echo $output;
-    }  
-
        
 //            $reponse = $connection->multi_query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
    

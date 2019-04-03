@@ -41,7 +41,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
      $name =  $object['Key']; 
     echo $name;
         if ($name as $content){
-             if(is_file($content){
+             if(is_file("$content"){
                   echo $content
              }  
              else{

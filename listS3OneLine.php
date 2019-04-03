@@ -13,7 +13,7 @@ $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
 //connect to S3
 // $bucket = 'new-bucket-10ed2760';
 $bucketest = 'archivage';
-$bucketAr = 'new-bucket-10ed2760/test/';
+// $bucketAr = 'new-bucket-10ed2760/test/';
 $bucket  = "new-bucket-10ed2760";
 $keynamesql  = "onetrack_2019-03-29.sql";
 // $name  = "onetrack_2019-03-29.zip";
@@ -57,13 +57,13 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        $str=file_get_contents("/var/tmp/".$name);
         $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
     
-         
+
         //echo $str;
        file_put_contents("/var/tmp/".$name, $str);
-       $resultput = $s3->putObject([
-               'Body' => "/var/tmp/".$name,
+        $resultput = $s3->putObject([
+               'Body' => $str,
                'Bucket' => $bucketest,
-               'Key'    => $name
+               'Key'    => $testt
        ]);
          $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
             $output = shell_exec($command);   

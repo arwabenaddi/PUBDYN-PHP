@@ -42,13 +42,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
          echo $name;       
      }
      foreach ($name as $content){
-             if(is_file("$content"){
-                  echo $content
-             }  
-             else{
-                 echo 'no file';
-             }
-        }
+         echo    $content;
+     }
 //    foreach ($objects['Contents']  as $object) {  
 //        $name =  $object['Key']; 
 //        if(is_file($name){                  

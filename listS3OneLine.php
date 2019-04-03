@@ -40,7 +40,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        
          foreach($object as $key) {
 //              print "$key => $value\n";
-            $extension = substr(strrchr($key, '.'), 1);
+            $extension = pathinfo($key, PATHINFO_EXTENSION);
                echo $extension; 
             if ($extension = "7z"){
                echo 'ok ext';

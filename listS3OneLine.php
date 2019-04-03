@@ -12,10 +12,10 @@ $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
 //  $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
 //connect to S3
 // $bucket = 'new-bucket-10ed2760';
-$bucketAr = 'archivage';
+// $bucketAr = 'archivage';
 // $bucketAr = 'new-bucket-10ed2760/test/';
 $bucket  = "new-bucket-10ed2760";
-$keynamesql  = "onetrack_2019-03-29.sql";
+// $keynamesql  = "onetrack_2019-03-29.sql";
 // $name  = "onetrack_2019-03-29.zip";
 $CELLAR_ADDON_HOST = 'cellar-c2.services.clever-cloud.com';
 $CELLAR_ADDON_KEY_ID = 'SW016A92CMAJ79EUZY77';

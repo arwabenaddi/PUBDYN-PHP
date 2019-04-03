@@ -32,7 +32,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
         ],
         'endpoint'=>"https://".$CELLAR_ADDON_HOST
       ]);
-  $name = "";    
+//   $name = "";    
  try {
     $objects = $s3->listObjects([      
       'Bucket'=>$bucket       

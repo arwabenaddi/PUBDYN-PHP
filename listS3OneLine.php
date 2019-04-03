@@ -45,7 +45,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
             //if ($extension = "7z"){
             $name = $object['Key'];
            
-             if(!endsWith($name, '/') || !endsWith($name, '.7z'))
+             if(!endsWith($name, '/') && !endsWith($name, '.7z'))
              {  
        
                  echo  $name;

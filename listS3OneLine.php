@@ -37,12 +37,21 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       'Bucket'=>$bucket       
     ]);
    foreach ($objects['Contents']  as $object) {   
-        $name =  $object['Key'];     
-        $result = $s3->getObject([
-            'Bucket' => $bucket,
-            'Key'    => $name,
-            'SaveAs' => "/var/tmp/".$name
-        ]);   
+        $name =  $object['Key'];
+         foreach($name as $key => $value) {
+//              print "$key => $value\n";
+            $extension = substr(strrchr($key, '.'), 1);
+            if ($extension == ".sql" || $extension == ".7z"){
+               echo 'ok ext'
+                 $result = $s3->getObject([
+                     'Bucket' => $bucket,
+                     'Key'    => $name,
+                     'SaveAs' => "/var/tmp/".$name
+                 ]);   
+            }
+    
+         }
+        
     }  
     if (!file_exists("/var/tmp/".$name)) {
         echo "DONT EXIST!!!!!!" . "<br> ";

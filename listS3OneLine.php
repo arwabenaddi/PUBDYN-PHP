@@ -57,11 +57,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        $str=file_get_contents("/var/tmp/".$name);
         $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
     
-       $resultput = $s3->putObject([
-               'Body' => $str,
-               'Bucket' => $bucketest,
-               'Key'    => $name
-       ]);
+
         //echo $str;
        file_put_contents("/var/tmp/".$name, $str);
 

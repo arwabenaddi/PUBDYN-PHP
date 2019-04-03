@@ -44,11 +44,11 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
               // echo $extension; 
             //if ($extension = "7z"){
             $name = $object['Key'];
-             echo  $name;
-//             if(!endsWith($name, '/') || !endsWith($name, '.7z'))
-//             {  
+           
+             if(!endsWith($name, '/') || !endsWith($name, '.7z'))
+             {  
        
-               
+                 echo  $name;
                
 //                $result = $s3->getObject([
 //                   'Bucket' => $bucket,
@@ -80,7 +80,7 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
 //                    $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
 //                    $output = shell_exec($command);   
 //                    echo $output;
-//             }
+             }
          
         
     }  

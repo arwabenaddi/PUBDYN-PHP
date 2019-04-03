@@ -37,8 +37,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
       'Bucket'=>$bucket       
     ]);
    foreach ($objects['Contents']  as $object) {   
-        $name =  $object['Key'];
-         foreach($name as $key => $value) {
+       
+         foreach($object as $key) {
 //              print "$key => $value\n";
             $extension = substr(strrchr($key, '.'), 1);
             if ($extension == ".sql" || $extension == ".7z"){

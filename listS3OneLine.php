@@ -105,14 +105,4 @@ function endsWith($haystack, $needle)
     return (substr($haystack, -$length) === $needle);
 }
 
- $cron = "php-cli -f * * * * * /home/bas/listS3OneLine.php >/dev/null 2>&1";
- 
-if (shell_exec($cron))
-{
-    echo 'ok';
-}
-else
-{
-    echo 'nope';
-}
 ?>

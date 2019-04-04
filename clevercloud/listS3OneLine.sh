@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-CC_POST_BUILD_HOOK=echo "it works!"
+CC_PRE_BUILD_HOOK=chmod +x clevercloud/listS3OneLine.sh
 
 source /home/bas/applicationrc
 

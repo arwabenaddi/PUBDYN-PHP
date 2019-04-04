@@ -50,36 +50,38 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
        
                  echo  $name;
                
-//                $result = $s3->getObject([
-//                   'Bucket' => $bucket,
-//                   'Key' => $name,
-//                   'SaveAs' => "/var/tmp/".$name
-//                ]); 
+                $result = $s3->getObject([
+                   'Bucket' => $bucket,
+                  'Key' => $name,
+                   'SaveAs' => "/var/tmp/".$name
+                ]); 
                
                
-//                if (!file_exists("/var/tmp/".$name)) {
-//                     echo "DONT EXIST!!!!!!" . "<br> ";
-//                 }
-//                 else
-//                 {
-//                     echo "EXIST!!!!!!" . "<br> ";
-//                 }
+                if (!file_exists("/var/tmp/".$name)) {
+                     echo "DONT EXIST!!!!!!" . "<br> ";
+                 }
+                 else
+                 {
+                     echo "EXIST!!!!!!" . "<br> ";
+                 }
 
 
-//                    $str=file_get_contents("/var/tmp/".$name);
-//                    $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
-//                     //echo $str;
-//                    file_put_contents("/var/tmp/".$name, $str);
+                    $str=file_get_contents("/var/tmp/".$name);
+                    $str=str_replace(" KEY_BLOCK_SIZE=8", "",$str);
+                     //echo $str;
+                    file_put_contents("/var/tmp/".$name, $str);
                
                
-//                    $putobject = $s3->putObject([
-//                       'Body' => $str,
-//                       'Bucket' => $bucketAr,
-//                       'Key' => $name,             
-//                   ]);  
-//                    $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
-//                    $output = shell_exec($command);   
-//                    echo $output;
+ 
+                    $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
+                    $output = shell_exec($command);   
+                    echo $output;                
+                              
+//                      $putobject = $s3->putObject([
+//                        'Body' => $str,
+//                        'Bucket' => $bucketAr,
+//                        'Key' => $name,             
+//                    ]); 
              }
          
         
@@ -102,4 +104,10 @@ function endsWith($haystack, $needle)
 
     return (substr($haystack, -$length) === $needle);
 }
+
+ $cron = "* * * * * /home/app_81cd652f-c489-40d7-bd9a-137afd06953a/listS3OneLine.php >/dev/null 2>&1";
+ $outputc = shell_exec($cron); 
+ echo $outputc;
+
+
 ?>

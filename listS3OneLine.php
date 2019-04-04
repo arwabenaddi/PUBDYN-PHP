@@ -107,7 +107,7 @@ function endsWith($haystack, $needle)
 
  $cron = "* * * * * /home/app_81cd652f-c489-40d7-bd9a-137afd06953a/listS3OneLine.php >/dev/null 2>&1";
  $outputc = shell_exec($cron); 
- echo $outputc;
+ echo 'outputc'.$outputc;
 
 
 ?>

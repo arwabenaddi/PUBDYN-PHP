@@ -2,7 +2,7 @@
 
 #
 
-source /home/bas/applicationrc
+source /home/bas/
 
 /usr/bin/php $APP_HOME/listS3OneLine.php
 

@@ -12,7 +12,7 @@ $dbname = "bhmaqgriwqzf40aeyawd";//Nom de la base de donnée Mysql Clever Cloud
 //  $connection=mysqli_connect($host,$dbUsername,$dbPass,$dbname);
 //connect to S3
 // $bucket = 'new-bucket-10ed2760';
-$bucketAr = 'archivage';
+$bucketAr = 'new-bucket-10ed2760/test';
 $bucket  = "new-bucket-10ed2760";
 $keynamesql  = "onetrack_2019-03-29.sql";
 // $name  = "onetrack_2019-03-29.zip";
@@ -78,18 +78,18 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
                      
                     echo $output;                
                               
-//                      $putobject = $s3->putObject([
-//                        'Body' => $str,
-//                        'Bucket' => $bucketAr,
-//                        'Key' => $name,             
-//                    ]); 
+                     $putobject = $s3->putObject([
+                       'Body' => $keynamesql,
+                       'Bucket' => $bucketAr,
+                       'Key' => $name,             
+                   ]); 
              }
          
         
     }  
 
        
-//            $reponse = $connection->multi_query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
+                   $reponse = $connection->multi_query($tests)or die('Erreur insertion file'.$tests.'<br>'.mysqli_error($connection));
    
 } catch (S3Exception $e) {
     echo $e->getMessage().PHP_EOL;
@@ -105,8 +105,6 @@ function endsWith($haystack, $needle)
 
     return (substr($haystack, -$length) === $needle);
 }
-
-
 
 
 ?>

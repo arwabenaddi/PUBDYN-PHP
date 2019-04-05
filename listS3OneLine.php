@@ -1,6 +1,6 @@
 <?php
 // Decode the argument of the batch
-// $racine=substr($argv[0],0,strpos($argv[0], "list"));
+$racine=substr($argv[0],0,strpos($argv[0], "list"));
 require_once $racine.'aws-autoloader.php';
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;

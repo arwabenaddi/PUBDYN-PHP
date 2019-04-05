@@ -74,14 +74,8 @@ $CELLAR_ADDON_KEY_SECRET = 'KViiRPiEKYrxBA7OQcuMpYJUpxYzMP0yit3lh5k6';
                      
  
                     $command = "mysql -h bhmaqgriwqzf40aeyawd-mysql.services.clever-cloud.com -P 3306 -u un0nkeibvggep0ix -pUiS485fnESJLjbyP2ePM bhmaqgriwqzf40aeyawd  < /var/tmp/".$name;
-//                     $output = shell_exec($command);  
-                
-                     if (shell_exec($command)){
-                        echo 'OKcommand';
-                     }
-                     else{
-                         echo 'EcheCommand';
-                     }
+                    $output = shell_exec($command);                 
+                     
                     echo $output;                
                               
 //                      $putobject = $s3->putObject([
